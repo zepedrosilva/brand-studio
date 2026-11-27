@@ -4,6 +4,12 @@ All notable changes to this project are listed here. The format follows [Keep a 
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-11-27
+
+### Fixed
+
+- The plugin homepage points at the new site address, zepedro.com/plugins/brand-studio/.
+
 ## [0.5.0] - 2026-11-27
 
 First public release. Five private iterations (0.1.0 to 0.4.0, 2026-11-18 to 2026-11-19) were folded into this one.
