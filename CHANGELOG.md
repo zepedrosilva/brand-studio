@@ -4,6 +4,12 @@ All notable changes to this project are listed here. The format follows [Keep a 
 
 ## [Unreleased]
 
+## [0.5.2] - 2026-11-27
+
+### Fixed
+
+- The author name is written with its accent: José Silva.
+
 ## [0.5.1] - 2026-11-27
 
 ### Fixed

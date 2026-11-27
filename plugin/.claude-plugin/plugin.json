@@ -1,10 +1,10 @@
 {
   "name": "brand-studio",
   "displayName": "Brand Studio",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Drafts a brand identity for your app as checked SVG, for developers without a design background: concept, mark, wordmark, palette, exports and a brand sheet. Also reviews existing SVG logos against numbered, sourced rules.",
   "author": {
-    "name": "Jose Silva"
+    "name": "José Silva"
   },
   "license": "MIT",
   "keywords": [
