@@ -16,7 +16,7 @@ It makes a strong first draft for developers and small teams. It does not replac
 ## Install
 
 ```
-/plugin marketplace add zepedrosilva/claude-plugins
+/plugin marketplace add zepedrosilva/plugins
 /plugin install brand-studio@zepedrosilva
 ```
 

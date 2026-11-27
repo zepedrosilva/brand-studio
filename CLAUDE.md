@@ -10,8 +10,8 @@ The repository is public. Treat every file as public: no credentials, internal U
 
 ## Layout
 
-- `plugin/` is what users install (manifest, skills, agents, templates, research). Everything else is the project around it: docs, examples, site, CI. Never make the plugin read a file outside `plugin/`.
-- The plugin is listed in a separate catalog repository (`zepedrosilva/claude-plugins`); this repo has no `marketplace.json`.
+- `plugin/` is what users install (manifest, skills, agents, templates, research). Everything else is the project around it: docs, examples, site, CI. The site is published by the catalog repo, which runs `scripts/build-site.sh`; this repo has no Pages workflow. Never make the plugin read a file outside `plugin/`.
+- The plugin is listed in a separate catalog repository (`zepedrosilva/plugins`); this repo has no `marketplace.json`.
 
 ## Commands
 
