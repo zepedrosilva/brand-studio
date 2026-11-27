@@ -35,11 +35,11 @@ How to change the plugin: a rule, a reference, a skill, an agent, a template or 
 
 ## Versioning
 
-Claude Code updates an installed plugin only when `version` in `plugin/.claude-plugin/plugin.json` rises, so a change without a bump never reaches users. `scripts/check-version.sh` fails a pull request that changes `plugin/` without raising it.
+Claude Code updates an installed plugin only when `version` in `plugin/.claude-plugin/plugin.json` rises, so a change without a bump never reaches users. `scripts/check-version.sh` fails a pull request that changes `plugin/` (outside `plugin/research/`) without raising it.
 
 - Patch (0.5.x): wording, a fix, a number in `thresholds.md`, a new source row.
 - Minor (0.x.0): a rule, reference, template, script option or agent added; a rule's severity raised.
 - Major (x.0.0): a skill renamed or removed, a brief field or a `brand/` file name changed in a way that breaks existing brand folders.
-- Files outside `plugin/` (docs, site, examples, CI) need no bump.
+- Documentation needs no bump: files outside `plugin/` (docs, site, examples, CI) and `plugin/research/`. Skill, agent, reference and template text is what the model follows, so a wording change there is a patch.
 
 Propose the bump with a one-line reason, put it in the same commit as the change, and add a line under `Unreleased` in `CHANGELOG.md`. A release moves those lines under the new version with the date.

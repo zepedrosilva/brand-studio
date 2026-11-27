@@ -10,3 +10,4 @@ Evidence is a pointer (PR, issue, commit, ADR, file path or "session"), never qu
 - 2026-01-31 · PR #12 · Run the migration check before changing a schema · promote-to: check
 -->
 - 2026-11-27 · session (install-deps e2e run) · Put any command that needs ${CLAUDE_PLUGIN_ROOT} or ${CLAUDE_PLUGIN_DATA} in a skill the Skill tool loads or in an agent, since files read from brand-core or references keep the placeholder unfilled · promote-to: rule
+- 2026-11-27 · session · Do not raise the plugin version for documentation-only changes; plugin/research/ counts as documentation, skill, agent, reference and template text does not · promote-to: check

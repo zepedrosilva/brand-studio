@@ -1,11 +1,12 @@
 #!/bin/sh
 # Fails when plugin/ changed since <base> but plugin.json's version did not rise.
+# plugin/research/ is documentation only and needs no bump.
 # Usage: sh scripts/check-version.sh <base-ref>
 set -eu
 base=${1:?usage: check-version.sh <base-ref>}
 manifest=plugin/.claude-plugin/plugin.json
 git rev-parse --verify --quiet "$base^{commit}" >/dev/null || { echo "base ref not found: $base"; exit 2; }
-if git diff --quiet "$base" -- plugin/; then echo "plugin/ unchanged: no bump needed"; exit 0; fi
+if git diff --quiet "$base" -- plugin/ ':(exclude)plugin/research/'; then echo "plugin/ unchanged (research/ aside): no bump needed"; exit 0; fi
 ver() { sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -n1; }
 old=$(git show "$base:$manifest" 2>/dev/null | ver || true)
 new=$(ver < "$manifest")

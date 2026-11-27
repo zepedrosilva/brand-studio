@@ -23,7 +23,7 @@ The repository is public. Treat every file as public: no credentials, internal U
 
 ## Rules
 
-- Raise `version` in `plugin/.claude-plugin/plugin.json` whenever a file under `plugin/` changes; installed copies update only then. Propose the bump with a reason and wait for a yes. See [docs/authoring.md](docs/authoring.md).
+- Raise `version` in `plugin/.claude-plugin/plugin.json` whenever a file under `plugin/` changes, except documentation-only `plugin/research/`; installed copies update only then. Propose the bump with a reason and wait for a yes. See [docs/authoring.md](docs/authoring.md).
 - Rule IDs (`brd:CRF-02`) are permanent: never renumber or reuse one.
 - Every rule and threshold cites a source from `plugin/research/` (an `A<n>`, `C<n>` or `T<n>` row, or a named tool from its track B table) or is labelled `assumption`.
 - Sentence capitalisation in all prose: first word and proper nouns only.
