@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>brand-studio: a brand identity for your app, as checked SVG</title>
+<meta name="description" content="A Claude Code plugin that drafts a brand identity for your app as checked SVG, for developers without a design background.">
+<link rel="icon" href="example/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="brand-studio">
+<meta property="og:description" content="A brand identity for your app, as checked SVG.">
+<meta property="og:image" content="https://zepedrosilva.github.io/brand-studio/example/exports/png/social-1024.png">
+<style>
+  :root {
+    --bg: #FDF3EF; --text: #2E2724; --brand: #D33222; --neutral: #766E6A; --line: #E9DDD8; --card: #FFFFFF;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1B1412; --text: #FDF3EF; --brand: #FE5F4B; --neutral: #A59C98; --line: #3A2F2B; --card: #241C19; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 52rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+  a { color: var(--brand); }
+  header img { width: min(22rem, 80%); height: auto; }
+  h1 { font-size: clamp(1.9rem, 5vw, 2.8rem); line-height: 1.15; margin: 2.5rem 0 1rem; letter-spacing: -0.01em; }
+  h2 { font-size: 1.35rem; margin: 3rem 0 1rem; }
+  .lead { font-size: 1.15rem; max-width: 40rem; }
+  .muted { color: var(--neutral); }
+  pre { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.25rem; overflow-x: auto; font: 15px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  ol { padding-left: 1.25rem; }
+  li { margin: 0.4rem 0; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.25rem; }
+  .card { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; color: inherit; text-decoration: none; }
+  .card img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--line); }
+  .card span { display: block; padding: 0.8rem 1rem; font-weight: 600; }
+  .card:hover span, .card:focus-visible span { color: var(--brand); }
+  footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="example/lockup-horizontal-reversed.svg">
+      <img src="example/lockup-horizontal.svg" alt="brand-studio">
+    </picture>
+  </header>
+
+  <h1>A brand identity for your app, checked before you see it.</h1>
+  <p class="lead">You can build an app, but you have never designed an identity for one. Ask a model for a logo and you get circles, gradients and broken letters, with no word about who owns them.</p>
+  <p class="lead">brand-studio is a Claude Code plugin that works the way a careful designer does. It turns a few paragraphs about your project into a mark, wordmark, lockups, palette, exports and a brand sheet, all as SVG, each checked against numbered, sourced rules.</p>
+
+  <h2>Install</h2>
+<pre>/plugin marketplace add zepedrosilva/claude-plugins
+/plugin install brand-studio@zepedrosilva
+/brand-studio:brand-create &lt;your project's story&gt;</pre>
+  <p class="muted">At the start of a run, the plugin checks for its optional tools and offers to install what is missing. Say no and it still runs, judging the rules by reading the files.</p>
+
+  <h2>How it works</h2>
+  <ol>
+    <li>Your story becomes a brief, with a positioning line and a word to own.</li>
+    <li>A shortlist of metaphors, with the clichés of your category named.</li>
+    <li>Three greyscale concepts, drawn in parallel and checked.</li>
+    <li>An independent review, then you pick one.</li>
+    <li>The kit is built by editing your pick: palette, wordmark, lockups and icons.</li>
+    <li>Exports, a page that shows the kit in use, and a brand sheet with legal warnings.</li>
+  </ol>
+
+  <h2>See a real run</h2>
+  <p>This site's own identity was made with the plugin.</p>
+  <div class="cards">
+    <a class="card" href="example/index.html"><img src="screenshots/brief.png" alt="The brand design brief" width="1280" height="800" loading="lazy"><span>The brand design brief</span></a>
+    <a class="card" href="example/applications.html"><img src="screenshots/applications.png" alt="The kit in use, with every colour pair measured" width="1280" height="800" loading="lazy"><span>The kit in use</span></a>
+  </div>
+
+  <footer>
+    <a href="https://github.com/zepedrosilva/brand-studio">Source on GitHub</a> · MIT licence · A first draft for your app, not a replacement for a designer.
+  </footer>
+</main>
+</body>
+</html>

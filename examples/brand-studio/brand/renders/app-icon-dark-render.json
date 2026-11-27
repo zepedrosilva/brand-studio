@@ -1,0 +1,82 @@
+{
+  "script": "brdrender",
+  "version": "0.1.0",
+  "tools": {
+    "resvg": "0.50.0"
+  },
+  "files": [
+    "brand/app-icon-dark.svg"
+  ],
+  "luminance_cut": 0.5,
+  "findings": [
+    {
+      "id": "brd:CRF-02 brd:CAP-02 brd:EVD-01",
+      "status": "review",
+      "file": "brand/renders/app-icon-dark-16.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-02 brd:CAP-02 brd:EVD-01",
+      "status": "review",
+      "file": "brand/renders/app-icon-dark-32.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-02 brd:CAP-02 brd:EVD-01",
+      "status": "review",
+      "file": "brand/renders/app-icon-dark-64.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-01",
+      "status": "review",
+      "file": "brand/renders/app-icon-dark-mono.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-01",
+      "status": "review",
+      "file": "brand/renders/app-icon-dark-mono-inverted.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-05",
+      "status": "review",
+      "file": "brand/renders/app-icon-dark-mirror.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-05",
+      "status": "review",
+      "file": "brand/renders/app-icon-dark-rot90.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-05",
+      "status": "review",
+      "file": "brand/renders/app-icon-dark-rot180.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:TYP-03 brd:CRF-06",
+      "status": "review",
+      "file": "brand/renders/app-icon-dark-display.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    }
+  ],
+  "summary": {
+    "fail_must": 0,
+    "fail_should": 0,
+    "review": 9,
+    "waived": 0
+  }
+}

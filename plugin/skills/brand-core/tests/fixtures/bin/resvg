@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+# Fake resvg for tests: writes a W x W RGBA PNG, left half opaque black, right half transparent.
+# Uses PNG filter type 1 (Sub) on every row so the reader's unfilter path is exercised.
+import struct, sys, zlib
+a = sys.argv[1:]
+if a and a[0] == "--version":
+    print("fake-resvg 0.0"); sys.exit(0)
+import os
+if os.environ.get("BRD_FAKE_LOG"):  # tests read the arguments the script passed
+    open(os.environ["BRD_FAKE_LOG"], "a").write(" ".join(a) + "\n")
+w = int(a[a.index("-w") + 1]); out = a[-1]
+row = bytes([0, 0, 0, 255] * (w // 2) + [0, 0, 0, 0] * (w - w // 2))
+sub = bytearray(row)
+for i in range(len(row) - 1, 3, -1):
+    sub[i] = (row[i] - row[i - 4]) & 255
+raw = b"".join(b"\x01" + bytes(sub) for _ in range(w))
+c = lambda t, b: struct.pack(">I", len(b)) + t + b + struct.pack(">I", zlib.crc32(t + b) & 0xffffffff)
+open(out, "wb").write(b"\x89PNG\r\n\x1a\n" + c(b"IHDR", struct.pack(">IIBBBBB", w, w, 8, 6, 0, 0, 0)) + c(b"IDAT", zlib.compress(raw)) + c(b"IEND", b""))

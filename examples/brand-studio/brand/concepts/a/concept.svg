@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <title>Concept A</title>
+  <g id="symbol" transform="translate(16 4)">
+    <g id="arc">
+      <path d="M220 128A108 108 0 0 1 4 128L28 128A84 84 0 0 0 196 128Z" fill="#000000"/>
+    </g>
+    <g id="legs">
+      <polygon points="146.14,36.86 173.86,52.86 117.2,131 106.8,125" fill="#000000"/>
+      <polygon points="146.14,52.86 173.86,36.86 213.2,125 202.8,131" fill="#000000"/>
+    </g>
+    <g id="hinge">
+      <rect x="152" y="12" width="16" height="16" fill="#000000"/>
+      <circle cx="160" cy="44.86" r="20" fill="#000000"/>
+    </g>
+  </g>
+</svg>

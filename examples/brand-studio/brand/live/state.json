@@ -1,0 +1,477 @@
+{
+ "steps": [
+  {
+   "id": "brief",
+   "title": "Brief",
+   "status": "done",
+   "note": ""
+  },
+  {
+   "id": "shortlist",
+   "title": "Shortlist",
+   "status": "done",
+   "note": ""
+  },
+  {
+   "id": "concepts",
+   "title": "Three concepts",
+   "status": "done",
+   "note": ""
+  },
+  {
+   "id": "review",
+   "title": "Blind review",
+   "status": "done",
+   "note": ""
+  },
+  {
+   "id": "pick",
+   "title": "Your pick",
+   "status": "done",
+   "note": ""
+  },
+  {
+   "id": "kit",
+   "title": "Kit: palette, wordmark, lockups",
+   "status": "done",
+   "note": ""
+  },
+  {
+   "id": "story",
+   "title": "Story and brand sheet",
+   "status": "done",
+   "note": ""
+  },
+  {
+   "id": "export",
+   "title": "Exports and applications page",
+   "status": "done",
+   "note": ""
+  },
+  {
+   "id": "final",
+   "title": "Final review",
+   "status": "done",
+   "note": ""
+  }
+ ],
+ "questions": [
+  {
+   "id": "audience",
+   "text": "Who sees the brand first? Suggested because the narrative names developers who can build software but not design an identity.",
+   "suggest": "Developers who build apps but have no brand or design background",
+   "options": [],
+   "kind": "text",
+   "status": "answered",
+   "answer": "Developers who build apps but have no brand or design background",
+   "asked": "2026-11-27T11:00:22+0000",
+   "answered": "2026-11-27T11:22:00+0000"
+  },
+  {
+   "id": "positioning",
+   "text": "Positioning line (for, who, that; unlike). Suggested from the essence and the tension in the narrative.",
+   "suggest": "For developers who build apps without a design background, brand-studio is a Claude Code plugin that drafts a full brand identity as checked SVG; unlike asking a model for a logo, every mark is proven against numbered, sourced rules before you see it",
+   "options": [],
+   "kind": "text",
+   "status": "answered",
+   "answer": "For developers who build apps without a design background, brand-studio is a Claude Code plugin that drafts a full brand identity as checked SVG; unlike asking a model for a logo, every mark is proven against numbered, sourced rules before you see it",
+   "asked": "2026-11-27T11:00:22+0000",
+   "answered": "2026-11-27T11:22:07+0000"
+  },
+  {
+   "id": "own-word",
+   "text": "One word the brand should own. Suggested: proven, because checking before showing is what sets it apart from asking a model for a logo.",
+   "suggest": "proven",
+   "options": [],
+   "kind": "text",
+   "status": "answered",
+   "answer": "checked",
+   "asked": "2026-11-27T11:00:22+0000",
+   "answered": "2026-11-27T13:02:48+0000"
+  },
+  {
+   "id": "pick",
+   "text": "Pick one concept. A (compass): incomplete, brd:CRF-02 still in review at 16 px; name test partly. B (branding iron): pass with findings; name test no (reads as a pin or plumb bob). C (code brackets around a diamond): pass with findings; name test yes; tightest gap about 1 px at 16 px; may read as an eye. Still assumed in the brief: audience, positioning, own-word.",
+   "suggest": "c",
+   "options": [
+    "a",
+    "b",
+    "c"
+   ],
+   "kind": "pick",
+   "status": "answered",
+   "answer": "c",
+   "asked": "2026-11-27T11:04:56+0000",
+   "answered": "2026-11-27T11:22:57+0000"
+  },
+  {
+   "id": "story",
+   "text": "Confirm the brand story (shown in the brief), or write your edits.",
+   "suggest": "confirmed",
+   "options": [],
+   "kind": "text",
+   "status": "answered",
+   "answer": "confirmed (the rewrite, answered in the terminal)",
+   "asked": "2026-11-27T11:30:10+0000",
+   "answered": "2026-11-27T13:02:48+0000"
+  }
+ ],
+ "recommendation": {
+  "concept": "c",
+  "reason": "Strongest at every size and the only one whose blind guesses land on the narrative (code brackets: the developer's world holding one finished mark). The eye reading and the 1 px top gap are fixable as edits in the kit."
+ },
+ "picked": "c",
+ "run": {
+  "status": "done",
+  "started": "2026-11-27T10:59:33+0000",
+  "finished": "2026-11-27T11:44:08+0000"
+ },
+ "name": "brand-studio",
+ "brief": {
+  "concept": "two code brackets holding one finished shape: the developer's world framing the identity you leave with",
+  "audience": "developers who build apps but have no brand or design background",
+  "tone": "careful, rigorous, honest, practical",
+  "avoid": "magic wands and sparkles (the AI clich\u00e9), paintbrushes and paint palettes (the design clich\u00e9), Bezier pen nibs and handles (the vector-tool clich\u00e9), gradients, mascots",
+  "metaphor": "code angle brackets holding a single solid shape: a developer's world framing one finished mark (concept C, picked 2026-11-27) (shortlist: brief.md#shortlist)",
+  "positioning": "for developers who build apps without a design background, brand-studio is a Claude Code plugin that drafts a full brand identity as checked SVG; unlike asking a model for a logo, every mark is checked against numbered, sourced rules before you see it",
+  "own-word": "checked",
+  "assets": "the vermilion diamond held inside two ink brackets; the even channel between them",
+  "category-colours": "violet #7C3AED break: AI tools lean violet and violet-to-blue gradients (assumed); blue #2563EB break: the default colour of developer tools (assumed); multicolour break: design tools often use many hues (assumed)",
+  "scope": "C",
+  "wordmark-font": "Space Grotesk Version 2.000 (variable, wght 700), licence OFL-1.1, read at github.com/google/fonts ofl/spacegrotesk/OFL.txt, commit 5026800, 2026-11-27",
+  "story-status": "confirmed",
+  "pair-cue": "",
+  "narrative": "`examples/brand-studio/narrative.md` (the plugin's own pitch, agreed with the user on 2026-11-27).",
+  "story": [
+   "Most developers can build an app but have never designed an identity for one. Ask a model for a logo and you get circles, gradients and broken letters, with no word about who owns them.",
+   "brand-studio works the way a careful designer does: one idea, three concepts drawn in black, each checked and rendered before you see it, one pick, and a kit built by editing that pick. Every rule it applies has a number and a source.",
+   "The mark is a pair of code brackets holding one finished shape: the developer's world, framing the identity you leave with. The shape carries the only colour; the rest is ink, and a lowercase wordmark that sits comfortably next to code."
+  ],
+  "rationale": [
+   "Filled in kit steps 2 and 3: one line per tone word, then palette and type. Never a colour meaning.",
+   "careful: one accent only, used on one shape, so colour is never decoration; one type family, one weight in the wordmark.",
+   "rigorous: every value comes from two OKLCH ramps with measured contrast; letters are shaped, kerned outlines, not drawn.",
+   "honest: a plain warm neutral and near-black ink, no gradients or glow; lowercase, the name written as it is typed.",
+   "practical: four roles, each with a light and a dark value, ready to drop into an app; a grotesque that reads at small sizes on screen.",
+   "palette: breaks the category's violet and blue so the mark stands apart from AI and developer tools; a warm neutral keeps the accent the only saturated colour.",
+   "type: Space Grotesk. A grotesque with technical details that sits beside code without looking like a code font; bold lowercase for the wordmark, matching the mark's weight. Text sizes not stated."
+  ],
+  "shortlist": [
+   {
+    "n": 1,
+    "line": "A drafting compass mid-arc: the instrument of careful construction, drawing the one circle everything is built on.",
+    "kind": "literal",
+    "score": "2+2+2+1+3 = 10",
+    "chosen": "a"
+   },
+   {
+    "n": 2,
+    "line": "The end of a branding iron, a simple geometric seal: the oldest meaning of \"brand\", a mark made once and made to last.",
+    "kind": "literal",
+    "score": "2+2+2+2+3 = 11",
+    "chosen": "b"
+   },
+   {
+    "n": 3,
+    "line": "Code angle brackets holding a single solid shape: a developer's world framing one finished mark.",
+    "kind": "literal",
+    "score": "2+2+2+2+2 = 10",
+    "chosen": "c"
+   },
+   {
+    "n": 4,
+    "line": "A set square with a circle resting on it: drafting tools as proof of construction.",
+    "kind": "literal",
+    "score": "2+1+2+1+2 = 8",
+    "chosen": ""
+   },
+   {
+    "n": 5,
+    "line": "An easel holding one blank square canvas: the studio waiting for the app's idea.",
+    "kind": "literal",
+    "score": "1+1+2+1+3 = 8",
+    "chosen": ""
+   },
+   {
+    "n": 6,
+    "line": "Three tiles, one raised: three concepts and a single pick.",
+    "kind": "abstract",
+    "score": "2+2+2+2+1 = 9",
+    "chosen": ""
+   },
+   {
+    "n": 7,
+    "line": "A check mark emerging from construction circles: a mark proven before it is shown.",
+    "kind": "abstract",
+    "score": "2+1+2+2+1 = 8",
+    "chosen": ""
+   },
+   {
+    "n": 8,
+    "line": "A grid with one filled cell growing into a shape: an identity built on a unit.",
+    "kind": "abstract",
+    "score": "1+2+2+1+1 = 7",
+    "chosen": ""
+   },
+   {
+    "n": 9,
+    "line": "A seal stamp pressing a square: approved, signed off.",
+    "kind": "literal",
+    "score": "1+1+2+2+2 = 8",
+    "chosen": ""
+   },
+   {
+    "n": 10,
+    "line": "Sparkles around a square (the AI clich\u00e9, no twist).",
+    "kind": "abstract",
+    "score": "0+0+2+1+1 = 4",
+    "chosen": ""
+   }
+  ],
+  "assumed": "Assumed: none. Audience and positioning confirmed by the user on the live page; own-word \"checked\" (replacing the suggested \"proven\", which overclaimed), the vermilion brand colour and the story confirmed in review, 2026-11-27.",
+  "roles": [
+   {
+    "role": "brand",
+    "light": "#d33222",
+    "dark": "#fe5f4b",
+    "ramp": "vermilion",
+    "lstep": 600,
+    "dstep": 400,
+    "cl": 4.53,
+    "cd": 6.02
+   },
+   {
+    "role": "neutral",
+    "light": "#766e6a",
+    "dark": "#a59c98",
+    "ramp": "stone",
+    "lstep": 600,
+    "dstep": 400,
+    "cl": 4.57,
+    "cd": 6.76
+   },
+   {
+    "role": "background",
+    "light": "#fdf3ef",
+    "dark": "#1b1412",
+    "ramp": "stone",
+    "lstep": 50,
+    "dstep": 950
+   },
+   {
+    "role": "text",
+    "light": "#2e2724",
+    "dark": "#fdf3ef",
+    "ramp": "stone",
+    "lstep": 900,
+    "dstep": 50,
+    "cl": 13.44,
+    "cd": 16.65
+   }
+  ]
+ },
+ "concepts": [
+  {
+   "id": "a",
+   "line": "a drafting compass mid-arc, the instrument of careful construction drawing the one circle everything is built on.",
+   "svg": "concepts/a/concept.svg",
+   "renders": {
+    "16": "concepts/a/renders/concept-16.png",
+    "64": "concepts/a/renders/concept-64.png",
+    "display": "concepts/a/renders/concept-display.png",
+    "mono": "concepts/a/renders/concept-mono.png"
+   }
+  },
+  {
+   "id": "b",
+   "line": "the end of a branding iron, a simple geometric seal: the oldest meaning of \"brand\", a mark made once and made to last.",
+   "svg": "concepts/b/concept.svg",
+   "renders": {
+    "16": "concepts/b/renders/concept-16.png",
+    "64": "concepts/b/renders/concept-64.png",
+    "display": "concepts/b/renders/concept-display.png",
+    "mono": "concepts/b/renders/concept-mono.png"
+   }
+  },
+  {
+   "id": "c",
+   "line": "code angle brackets holding a single solid shape: a developer's world framing one finished mark.",
+   "svg": "concepts/c/concept.svg",
+   "renders": {
+    "16": "concepts/c/renders/concept-16.png",
+    "64": "concepts/c/renders/concept-64.png",
+    "display": "concepts/c/renders/concept-display.png",
+    "mono": "concepts/c/renders/concept-mono.png"
+   }
+  }
+ ],
+ "logo": [
+  {
+   "file": "mark.svg",
+   "role": "Master mark, flat colours",
+   "dark": false,
+   "tile": false
+  },
+  {
+   "file": "app-icon-dark.svg",
+   "role": "Extra",
+   "dark": true,
+   "tile": false
+  },
+  {
+   "file": "app-icon.svg",
+   "role": "Extra",
+   "dark": false,
+   "tile": false
+  },
+  {
+   "file": "favicon.svg",
+   "role": "Extra",
+   "dark": false,
+   "tile": false
+  },
+  {
+   "file": "lockup-horizontal-reversed.svg",
+   "role": "Side by side, dark backgrounds",
+   "dark": true,
+   "tile": false
+  },
+  {
+   "file": "lockup-horizontal.svg",
+   "role": "Mark and name side by side",
+   "dark": false,
+   "tile": false
+  },
+  {
+   "file": "lockup-stacked-reversed.svg",
+   "role": "Mark above name, dark backgrounds",
+   "dark": true,
+   "tile": false
+  },
+  {
+   "file": "lockup-stacked.svg",
+   "role": "Mark above name",
+   "dark": false,
+   "tile": false
+  },
+  {
+   "file": "mark-mono.svg",
+   "role": "One colour",
+   "dark": false,
+   "tile": false
+  },
+  {
+   "file": "mark-reversed.svg",
+   "role": "For dark backgrounds",
+   "dark": true,
+   "tile": false
+  },
+  {
+   "file": "social.svg",
+   "role": "Extra",
+   "dark": false,
+   "tile": false
+  },
+  {
+   "file": "wordmark-reversed.svg",
+   "role": "Outlined name, dark backgrounds",
+   "dark": true,
+   "tile": false
+  },
+  {
+   "file": "wordmark.svg",
+   "role": "Outlined name",
+   "dark": false,
+   "tile": false
+  }
+ ],
+ "exports": {
+  "files": 13,
+  "sizes": [
+   16,
+   32,
+   48,
+   64,
+   128,
+   256,
+   512,
+   1024
+  ],
+  "zip": "exports/brand-studio-brand-assets.zip"
+ },
+ "checks": {
+  "fail_must": 0,
+  "fail_should": 0,
+  "review": 2,
+  "waived": 0
+ },
+ "review": "# Review: after the recolour\n\nReviewer: `brand-reviewer` (sonnet, high), 2026-11-27, after the maintainer replaced the brand colour (a burnt orange that read brown) with vermilion #D33222 (light) and #FE5F4B (dark), approved a rewritten story and set the word to own to \"checked\".\n\n**Verdict: pass with findings.** 0 MUST fail, 0 SHOULD fail [script].\n\n- Every fill in the brand SVGs, icons and exports is a roles-table value; the old brand colour appears in no asset [script].\n- brd:PAL-09: 21 of 21 pairs in the regenerated `applications.html` clear their floor [script]. The other colours on that page are its own chrome (pass and fail badges, a mock browser tab), not brand colours.\n- brd:CRF-01, CRF-02, CAP-02: the diamond and brackets stay distinct at 16 px and in one colour; the vermilion diamond reads on cream and on dark [render].\n- brd:CAP-03, CRF-03 on `social.svg`: outlined lettering on a tile, accepted as before.\n- Legal (brd:LGL-02): resemblance to common developer-tool bracket marks; no search was done; not a clearance.\n\nThe sections below are the earlier passes, kept as the record; colour values in them are updated where they described the current kit.\n\n---\n\n# Review: final kit\n\nReviewer: `brand-reviewer` (sonnet, high), on the whole brand folder after the kit. Written by the main session from the returned verdict, 2026-11-27.\n\n**Verdict: pass with findings.** 0 MUST fail, 0 SHOULD fail; 3 script `review` items, all resolved below.\n\nScope: 13 top-level SVGs (mark, mono, reversed, wordmark and reversed, four lockups, favicon, two app icons, social image), 6 icons and the export set. Scripts: brdcheck with `--brief`, `--exports` and `--icons`; brdinuse output read. Renders: resvg 0.50.0, about 25 PNGs looked at.\n\n## Passing MUST rules\n\n- brd:CTR-01 to CTR-05, CAP-01, SEC-01 on every file [script]. No text, tspan, image, href, style, script or gradient in any SVG or export.\n- brd:TYP-01, TYP-02 [script]: the wordmark is outlined; Space Grotesk 2.000, weight 700, OFL-1.1, source commit recorded.\n- brd:CRF-01, CRF-02 [render]: legible in one colour, inverted, and at 16 and 32 px; the 1 px channel at 16 px still reads.\n- brd:CTR-06 [script]: the export set is complete.\n- brd:PAL-01 to PAL-03, PAL-08, EVD-02 to EVD-04 [script]: every fill is a declared role value.\n\n## Findings\n\n- review brd:POS-05: the story is a draft until the maintainer confirms it (a user action, not a defect).\n- pass brd:PAL-09: 21 of 21 pairs in `applications.html` clear their floor. Thin margins: neutral #766E6A on #FDF3EF at 4.57:1 (12 px small print) and brand #D33222 on #FDF3EF at 4.53:1; re-run brdinuse after any change to those roles.\n- note brd:CAP-02: the channel is exactly 1 px at 16 px, at the limit; clean from 32 px up.\n- note brd:CRF-05: no known shape in mirror or rotation; the silhouette can read as an eye.\n- note brd:SET-01 to SET-03 [judgment only]: brdcheck did not run the set rules on `icons/`. All six icons share viewBox 24, stroke 2, square caps, mitre joins and no fill, matching `style-spec.json`. Logged as a plugin issue.\n- note brd:CNC-03 [judgment]: guesses at the final review were code brackets around a diamond, an eye, a gem in a frame: developer tooling reads, \"brand\" does not.\n\n## Review items resolved\n\n- brd:CAP-03 and brd:CRF-03 on `social.svg`: dismissed; the anchors and off-grid points are the outlined letters, exempt by design in wordmark and lockup files.\n- brd:CRF-01 on the mono render of an already reversed lockup: dismissed as a renderer artefact; the reversed display renders on dark read.\n- brd:CRF-02 on the horizontal lockup at 16 px: dismissed; its minimum is 120 px wide, and the 16 px asset is the mark.\n- brd:TYP-03, brd:CRF-06: confirmed clean; even letter spacing, no effects.\n\n## Legal (brd:LGL-01 to LGL-03, US only)\n\nWarnings, not decisions. AI-drafted, so copyright may not attach to the mark as drawn. Nobody has checked the mark or the name for trademark clearance: search the USPTO records, including the image search, before relying on it. Space Grotesk is OFL-1.1. Resemblance: generic code-bracket icons, and an eye. Only US notes exist; the brief's jurisdiction is worldwide.\n\n## Run notes\n\n- Two plugin issues found by this run: concept renders overwrite each other because every concept file is named `concept.svg`; and `brdcheck --icons` does not run the `SET-*` rules.\n\n---\n\n# Review: concepts at the checkpoint\n\nReviewer: `brand-reviewer` (sonnet, high), blind: given the three `concept.svg` files only, not the name, brief or notes. Written by the main session from the returned verdict, 2026-11-27.\n\n## Verdicts\n\n| Concept | Verdict |\n|---|---|\n| A (drafting compass) | incomplete after one edit round: brd:CRF-02 (MUST) is `review`; before the edit it was `fail` |\n| B (branding iron) | pass with findings |\n| C (code brackets) | pass with findings |\n\nScope: 3 files; brdcheck run (0 fail, 0 review; no brief, no font tools); renders run with resvg into `brand/renders/a`, `b`, `c`; check output `brand/checks/review.json`.\n\n## Name test (brd:CNC-03, judgment)\n\nGuesses from the renders alone, before any name was known; scored afterwards by the main session against the narrative.\n\n| Concept | Guesses | Score |\n|---|---|---|\n| A | compass or dividers drawing an arc; sickle or hook; clock hand or timer | partly (construction reads; the brand idea does not) |\n| B | plumb bob or pendulum; map pin or keyhole; key or hanging sign | no (no link to \"brand\" or to app identity) |\n| C | code brackets `<>`; eye; gem or data node | yes (the developer's world reads first) |\n\n## Findings\n\nA\n- fail brd:CRF-02 (MUST): the thin arc and tapering legs collapse at 16 px into a squiggle with no compass reading; weak at 32 px. Fix: thicken the arc and legs or add a small-size variant. [render]\n- fail brd:CAP-02 (SHOULD): the gap between the leg tip and the arc is about 0.5 px at 16 px and closes. [render]\n- note brd:CRF-04: weight lopsided to the upper right. brd:CRF-05: rotated 180 degrees it reads as a lightbulb or check mark.\n\nB\n- pass brd:CRF-01, brd:CRF-02 [render]\n- review brd:CRF-05 (SHOULD): upright it can read as a pin or key; rotated, a key or signpost. No known mark; the stem on a diamond is generic. [render]\n\nC\n- pass brd:CRF-01, brd:CRF-02 [render]\n- review brd:CAP-02 (SHOULD): the top gap between the brackets is 16 of 256 units, about 1 px at 16 px; holds in the render but is the tightest point. [render]\n- note brd:CRF-05: rotated 90 degrees it forms a hexagonal gem; symmetric, so mirroring changes nothing.\n\nAt 16 px: C reads cleanly, B holds as a pin silhouette, A fails. In one colour all three are pure black and read the same on white and reversed.\n\nA after the edit round (designer self-check; brdcheck 0 MUST failures)\n- review brd:CRF-02 (MUST): at 16 px it reads as a bowl with a small peak, about 2 px of compass; reads at 32 px. Next step: a simplified 16 px variant. [render]\n- pass brd:CAP-02: the pencil leg now joins the arc, so no gap can close. [render]\n- pass brd:CRF-04 [script]; review brd:CRF-03: 40 coordinates off the 8 grid, all from exact 30-degree construction.\n\n## Legal (brd:LGL-02)\n\nResemblance only, not a clearance. C resembles generic code-bracket icons, B generic pin and plumb-bob icons, A generic compass icons. Run the trademark and design-mark searches listed in the brand sheet (US-centred) before relying on any mark.\n\n## Run notes\n\n- The three concept files share the name `concept.svg`, so default renders overwrite each other; the reviewer rendered into per-concept folders. Logged as a plugin issue.\n",
+ "sheet": "# brand-studio: brand sheet\n\nFirst-draft identity made with brand-studio on 2026-11-27. A strong draft, not a professional identity; review it with a designer before wide use.\n\n## Story\n\nMost developers can build an app but have never designed an identity for one. Ask a model for a logo and you get circles, gradients and broken letters, with no word about who owns them.\n\nbrand-studio works the way a careful designer does: one idea, three concepts drawn in black, each checked and rendered before you see it, one pick, and a kit built by editing that pick. Every rule it applies has a number and a source.\n\nThe mark is a pair of code brackets holding one finished shape: the developer's world, framing the identity you leave with. The shape carries the only colour; the rest is ink, and a lowercase wordmark that sits comfortably next to code.\n\n## Concept\n\nTwo code brackets holding one finished shape: the developer's world framing the identity you leave with. The brackets run at 45 degrees and face inward around one solid diamond, built from three polygons on an 8-unit grid; the diamond's edges run parallel to the brackets, so the channel between them is the same width all round.\n\n## Positioning\n\n- Statement: for developers who build apps without a design background, brand-studio is a Claude Code plugin that drafts a full brand identity as checked SVG; unlike asking a model for a logo, every mark is checked against numbered, sourced rules before you see it (brd:POS-01)\n- Word to own: checked. The one word people should connect with the brand without being told; it steers the rationale and the copy\n- Distinctive assets: the vermilion diamond held inside two ink brackets, and the even channel between them; keep them unchanged in every file and every use (brd:POS-03)\n- Category colours: violet breaks (AI tools lean violet and violet-to-blue gradients); blue breaks (the default of developer tools); multicolour breaks (design tools). All three observations are assumed, not surveyed (brd:PAL-07)\n\n## Files\n\n| File | Use |\n|---|---|\n| `mark.svg` | Master, flat colours |\n| `mark-mono.svg` | One colour |\n| `mark-reversed.svg` | On dark backgrounds |\n| `wordmark.svg` | Outlined name |\n| `lockup-horizontal.svg` | Mark and name side by side |\n| `lockup-stacked.svg` | Mark above name |\n| `*-reversed.svg` | Wordmark and lockups for dark backgrounds |\n| `favicon.svg` | Browser tab |\n| `app-icon.svg`, `app-icon-dark.svg` | 1024 px square app icon, light and dark, no pre-rounded corners |\n| `social.svg` | 1200 by 630 social image: the horizontal lockup on the background colour |\n| `icons/` | Six interface icons and `style-spec.json` |\n\n## Downloads (brd:CTR-06)\n\n- Everything in one file: `exports/brand-studio-brand-assets.zip`\n- Vector: `exports/svg/` (one SVG per file above)\n- Raster: `exports/png/`, each file at 16, 32, 48, 64, 128, 256, 512 and 1024 px\n- Applications: `applications.html` shows the kit in a phone app, a browser tab, an app icon, a web page, a dark card, a slide and a flyer, with every colour pair measured\n- Transparency: every PNG has a transparent background, so it sits on any colour; only tiles (`app-icon*`, `social*`, `favicon*`, `*-tile*`) carry their own background. Use the reversed files on dark backgrounds.\n\n## Palette\n\n| Name | Hex | Role | Contrast against background (brd:EVD-02) |\n|---|---|---|---|\n| text | #2E2724 | mark (brackets) | 13.44:1 |\n| brand | #D33222 | mark (diamond) | 4.53:1 |\n| background | #FDF3EF | background | n/a |\n\n### Palette roles\n\n| Role | Light | Dark | Ramp | Contrast on background, light / dark (brd:EVD-02) |\n|---|---|---|---|---|\n| brand | #D33222 | #FE5F4B | vermilion 600/400 | 4.53:1 / 6.02:1 |\n| neutral | #766E6A | #A59C98 | stone 600/400 | 4.57:1 / 6.76:1 |\n| background | #FDF3EF | #1B1412 | stone 50/950 | n/a |\n| text | #2E2724 | #FDF3EF | stone 900/50 | 13.44:1 / 16.65:1 |\n\nRamps are built in OKLCH: vermilion at hue 30 and chroma 0.20, stone at hue 45 and chroma 0.012, so the neutral leans toward the brand hue. The brand values are solved at the lightest point that clears 4.5:1, so the colour is as bright as the contrast floor allows. A first pick, a darker burnt orange, was replaced at review because it read brown. The light neutral sits at lightness 0.545, between two ramp steps, because the step above it measured 4.44:1 and ratios are never rounded up.\n\nColour-blind check (brd:EVD-03, brd:EVD-04): n/a. There is no `brand-2` and no `status` rows, so no pair has to be told apart by colour alone; the brackets and the diamond also differ by 13.44:1 against 4.53:1 in lightness and by shape.\n\n| Pair | Contrast between them | Deutan | Protan | Tritan (review) |\n|---|---|---|---|---|\n| n/a | n/a | n/a | n/a | n/a |\n\nWhy this palette: breaks the category's violet and blue so the mark stands apart from AI and developer tools; a warm neutral keeps the accent the only saturated colour.\n\nDark set: `mark-reversed.svg`, `wordmark-reversed.svg`, both reversed lockups and `app-icon-dark.svg`, all in the dark role values.\n\n## Typography\n\nSpace Grotesk Version 2.000 (variable font, weight 700), OFL-1.1, licence read at github.com/google/fonts `ofl/spacegrotesk/OFL.txt`, commit 5026800, on 2026-11-27. The wordmark is outlined; the font is not needed to display it.\n\n- Families: one, Space Grotesk (brd:TYP-05)\n- Text sizes: none stated (brd:TYP-06)\n- Why this type: a grotesque with technical details that sits beside code without looking like a code font; bold lowercase for the wordmark, matching the mark's weight. Careful: one family, one weight. Rigorous: shaped, kerned outlines, not drawn letters. Honest: lowercase, the name written as it is typed. Practical: reads at small sizes on screen.\n\n## Clear space and minimum size\n\n- Clear space: one bracket width (the horizontal thickness of a bracket arm, 40 of the mark's 256 units) on every side.\n- Minimum size: mark 16 px; horizontal lockup 120 px wide; stacked lockup 80 px wide. The lockup minimums are an assumption from the renders, not a measured rule.\n\n## Misuse\n\n- Do not stretch, rotate, recolour outside the palette, add effects or outline the mark.\n- Do not set the name in live text in place of the wordmark.\n- Do not place the full-colour mark on a background that fails the contrast table; use the mono or reversed file.\n- Do not swap the colours of the brackets and the diamond: the diamond is the only accent.\n\n## Evidence\n\nChecks run: brdcheck 0.1.0, brdrender 0.1.0 with resvg 0.50.0, brdtext 0.1.0 with fontTools 4.68.0 and uharfbuzz 0.57.0, brdinuse 0.1.0. On `social.svg`, the anchor count (brd:CAP-03) and grid (brd:CRF-03) items come from the outlined letters, which the script exempts only in files named `wordmark*` or `lockup*`; resolved as expected for lettering. Latest review: `review.md`, verdict in that file.\n\n## Legal notes (brd:LGL-01)\n\nWarnings only, not legal advice. These notes cover the United States only; other jurisdictions were not researched. Sources and recheck dates: `brand-core/references/legal.md` in the brand-studio plugin.\n\n- **Copyright.** This identity was drafted with an AI model. In the US, the Copyright Office's view is that prompts alone do not make a person the author of the output; human selection, arrangement and changes may be protectable. The mark as drawn may not be protected by copyright. (US Copyright Office report on copyrightability, January 2025, and the Supreme Court's refusal to hear Thaler v. Perlmutter, March 2026; checked 2026-11-18, recheck 2027-03-01.)\n- **Trademark.** Nobody has checked whether this mark or name is clear to use or register. That is your job before you rely on it: search the USPTO trademark records, including its image search (a beta), and get a professional clearance search before filing. (USPTO image search beta, April 2026; checked 2026-11-18, recheck 2027-04-01.)\n- **Fonts.** Space Grotesk, OFL-1.1. OFL fonts may be used in logos; check the family's own licence file. (OFL FAQ 1.1-update8; checked 2026-11-18, recheck 2027-05-01.)\n- **Generators.** No hosted image or vector generator was used.\n- **Resemblance.** The reviewer noted that the mark resembles generic code-bracket icons, and the designer noted it can read as an eye (brd:LGL-02). Run the searches above.\n\n## Provenance (brd:LGL-04)\n\n- Narrative and brief: the narrative was written by the maintainer with Claude; the brief was drafted by Claude, with the audience and positioning confirmed by the maintainer.\n- Chosen concept: C (code brackets) of three, picked by the maintainer on the live page on 2026-11-27, after an independent blind review.\n- Human decisions after the pick: the maintainer rejected the first brand colour (it read brown) and chose vermilion from six measured options, approved a rewritten story after an editorial review, and replaced the suggested word to own, \"proven\", with \"checked\".\n- Human changes after the pick: none to the geometry. Colours, the wordmark, lockups, icons and extras were made by Claude as edits of the picked master; the maintainer reviews them before the kit is published.\n",
+ "legal": "## Legal notes (brd:LGL-01)\n\nWarnings only, not legal advice. These notes cover the United States only; other jurisdictions were not researched. Sources and recheck dates: `brand-core/references/legal.md` in the brand-studio plugin.\n\n- **Copyright.** This identity was drafted with an AI model. In the US, the Copyright Office's view is that prompts alone do not make a person the author of the output; human selection, arrangement and changes may be protectable. The mark as drawn may not be protected by copyright. (US Copyright Office report on copyrightability, January 2025, and the Supreme Court's refusal to hear Thaler v. Perlmutter, March 2026; checked 2026-11-18, recheck 2027-03-01.)\n- **Trademark.** Nobody has checked whether this mark or name is clear to use or register. That is your job before you rely on it: search the USPTO trademark records, including its image search (a beta), and get a professional clearance search before filing. (USPTO image search beta, April 2026; checked 2026-11-18, recheck 2027-04-01.)\n- **Fonts.** Space Grotesk, OFL-1.1. OFL fonts may be used in logos; check the family's own licence file. (OFL FAQ 1.1-update8; checked 2026-11-18, recheck 2027-05-01.)\n- **Generators.** No hosted image or vector generator was used.\n- **Resemblance.** The reviewer noted that the mark resembles generic code-bracket icons, and the designer noted it can read as an eye (brd:LGL-02). Run the searches above.",
+ "verdict": null,
+ "applications": true,
+ "folder": [
+  {
+   "path": "index.html",
+   "what": "This page: the live view while the run lasts, the report afterwards",
+   "exists": true
+  },
+  {
+   "path": "brief.md",
+   "what": "The brief: narrative, declaration, shortlist, palette roles, rationale, story",
+   "exists": true
+  },
+  {
+   "path": "brand-sheet.md",
+   "what": "The brand sheet: story, positioning, palette, type, clear space, legal notes",
+   "exists": true
+  },
+  {
+   "path": "review.md",
+   "what": "The latest review verdict, with the earlier concept review below it",
+   "exists": true
+  },
+  {
+   "path": "*.svg",
+   "what": "The logo files: master mark, variants, wordmark and lockups (SVG, outlined, no live text)",
+   "exists": true
+  },
+  {
+   "path": "wordmark.json",
+   "what": "Record of the font and the outlining step",
+   "exists": true
+  },
+  {
+   "path": "applications.html",
+   "what": "The kit placed in everyday applications, every colour pair measured",
+   "exists": true
+  },
+  {
+   "path": "concepts/",
+   "what": "The three greyscale concepts, each with its notes and renders",
+   "exists": true
+  },
+  {
+   "path": "exports/",
+   "what": "The downloadable set: svg/, png/ (transparent), manifest.json and the zip",
+   "exists": true
+  },
+  {
+   "path": "renders/",
+   "what": "PNG renders the checks looked at",
+   "exists": true
+  },
+  {
+   "path": "checks/",
+   "what": "JSON output of brdcheck",
+   "exists": true
+  },
+  {
+   "path": "live/",
+   "what": "State of this page; safe to delete once the run is over",
+   "exists": true
+  }
+ ],
+ "updated": "2026-11-27T13:02:48+0000",
+ "version": "0.1.0"
+}

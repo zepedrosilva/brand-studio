@@ -1,0 +1,211 @@
+{
+  "script": "brdrender",
+  "version": "0.1.0",
+  "files": {
+    "mark": {
+      "svg": "svg/mark.svg",
+      "png": {
+        "16": "png/mark-16.png",
+        "32": "png/mark-32.png",
+        "48": "png/mark-48.png",
+        "64": "png/mark-64.png",
+        "128": "png/mark-128.png",
+        "256": "png/mark-256.png",
+        "512": "png/mark-512.png",
+        "1024": "png/mark-1024.png"
+      },
+      "transparent": true,
+      "tile": false
+    },
+    "mark-mono": {
+      "svg": "svg/mark-mono.svg",
+      "png": {
+        "16": "png/mark-mono-16.png",
+        "32": "png/mark-mono-32.png",
+        "48": "png/mark-mono-48.png",
+        "64": "png/mark-mono-64.png",
+        "128": "png/mark-mono-128.png",
+        "256": "png/mark-mono-256.png",
+        "512": "png/mark-mono-512.png",
+        "1024": "png/mark-mono-1024.png"
+      },
+      "transparent": true,
+      "tile": false
+    },
+    "mark-reversed": {
+      "svg": "svg/mark-reversed.svg",
+      "png": {
+        "16": "png/mark-reversed-16.png",
+        "32": "png/mark-reversed-32.png",
+        "48": "png/mark-reversed-48.png",
+        "64": "png/mark-reversed-64.png",
+        "128": "png/mark-reversed-128.png",
+        "256": "png/mark-reversed-256.png",
+        "512": "png/mark-reversed-512.png",
+        "1024": "png/mark-reversed-1024.png"
+      },
+      "transparent": true,
+      "tile": false
+    },
+    "wordmark": {
+      "svg": "svg/wordmark.svg",
+      "png": {
+        "16": "png/wordmark-16.png",
+        "32": "png/wordmark-32.png",
+        "48": "png/wordmark-48.png",
+        "64": "png/wordmark-64.png",
+        "128": "png/wordmark-128.png",
+        "256": "png/wordmark-256.png",
+        "512": "png/wordmark-512.png",
+        "1024": "png/wordmark-1024.png"
+      },
+      "transparent": true,
+      "tile": false
+    },
+    "wordmark-reversed": {
+      "svg": "svg/wordmark-reversed.svg",
+      "png": {
+        "16": "png/wordmark-reversed-16.png",
+        "32": "png/wordmark-reversed-32.png",
+        "48": "png/wordmark-reversed-48.png",
+        "64": "png/wordmark-reversed-64.png",
+        "128": "png/wordmark-reversed-128.png",
+        "256": "png/wordmark-reversed-256.png",
+        "512": "png/wordmark-reversed-512.png",
+        "1024": "png/wordmark-reversed-1024.png"
+      },
+      "transparent": true,
+      "tile": false
+    },
+    "lockup-horizontal": {
+      "svg": "svg/lockup-horizontal.svg",
+      "png": {
+        "16": "png/lockup-horizontal-16.png",
+        "32": "png/lockup-horizontal-32.png",
+        "48": "png/lockup-horizontal-48.png",
+        "64": "png/lockup-horizontal-64.png",
+        "128": "png/lockup-horizontal-128.png",
+        "256": "png/lockup-horizontal-256.png",
+        "512": "png/lockup-horizontal-512.png",
+        "1024": "png/lockup-horizontal-1024.png"
+      },
+      "transparent": true,
+      "tile": false
+    },
+    "lockup-horizontal-reversed": {
+      "svg": "svg/lockup-horizontal-reversed.svg",
+      "png": {
+        "16": "png/lockup-horizontal-reversed-16.png",
+        "32": "png/lockup-horizontal-reversed-32.png",
+        "48": "png/lockup-horizontal-reversed-48.png",
+        "64": "png/lockup-horizontal-reversed-64.png",
+        "128": "png/lockup-horizontal-reversed-128.png",
+        "256": "png/lockup-horizontal-reversed-256.png",
+        "512": "png/lockup-horizontal-reversed-512.png",
+        "1024": "png/lockup-horizontal-reversed-1024.png"
+      },
+      "transparent": true,
+      "tile": false
+    },
+    "lockup-stacked": {
+      "svg": "svg/lockup-stacked.svg",
+      "png": {
+        "16": "png/lockup-stacked-16.png",
+        "32": "png/lockup-stacked-32.png",
+        "48": "png/lockup-stacked-48.png",
+        "64": "png/lockup-stacked-64.png",
+        "128": "png/lockup-stacked-128.png",
+        "256": "png/lockup-stacked-256.png",
+        "512": "png/lockup-stacked-512.png",
+        "1024": "png/lockup-stacked-1024.png"
+      },
+      "transparent": true,
+      "tile": false
+    },
+    "lockup-stacked-reversed": {
+      "svg": "svg/lockup-stacked-reversed.svg",
+      "png": {
+        "16": "png/lockup-stacked-reversed-16.png",
+        "32": "png/lockup-stacked-reversed-32.png",
+        "48": "png/lockup-stacked-reversed-48.png",
+        "64": "png/lockup-stacked-reversed-64.png",
+        "128": "png/lockup-stacked-reversed-128.png",
+        "256": "png/lockup-stacked-reversed-256.png",
+        "512": "png/lockup-stacked-reversed-512.png",
+        "1024": "png/lockup-stacked-reversed-1024.png"
+      },
+      "transparent": true,
+      "tile": false
+    },
+    "favicon": {
+      "svg": "svg/favicon.svg",
+      "png": {
+        "16": "png/favicon-16.png",
+        "32": "png/favicon-32.png",
+        "48": "png/favicon-48.png",
+        "64": "png/favicon-64.png",
+        "128": "png/favicon-128.png",
+        "256": "png/favicon-256.png",
+        "512": "png/favicon-512.png",
+        "1024": "png/favicon-1024.png"
+      },
+      "transparent": true,
+      "tile": true
+    },
+    "app-icon": {
+      "svg": "svg/app-icon.svg",
+      "png": {
+        "16": "png/app-icon-16.png",
+        "32": "png/app-icon-32.png",
+        "48": "png/app-icon-48.png",
+        "64": "png/app-icon-64.png",
+        "128": "png/app-icon-128.png",
+        "256": "png/app-icon-256.png",
+        "512": "png/app-icon-512.png",
+        "1024": "png/app-icon-1024.png"
+      },
+      "transparent": false,
+      "tile": true
+    },
+    "app-icon-dark": {
+      "svg": "svg/app-icon-dark.svg",
+      "png": {
+        "16": "png/app-icon-dark-16.png",
+        "32": "png/app-icon-dark-32.png",
+        "48": "png/app-icon-dark-48.png",
+        "64": "png/app-icon-dark-64.png",
+        "128": "png/app-icon-dark-128.png",
+        "256": "png/app-icon-dark-256.png",
+        "512": "png/app-icon-dark-512.png",
+        "1024": "png/app-icon-dark-1024.png"
+      },
+      "transparent": false,
+      "tile": true
+    },
+    "social": {
+      "svg": "svg/social.svg",
+      "png": {
+        "16": "png/social-16.png",
+        "32": "png/social-32.png",
+        "48": "png/social-48.png",
+        "64": "png/social-64.png",
+        "128": "png/social-128.png",
+        "256": "png/social-256.png",
+        "512": "png/social-512.png",
+        "1024": "png/social-1024.png"
+      },
+      "transparent": false,
+      "tile": true
+    }
+  },
+  "sizes": [
+    16,
+    32,
+    48,
+    64,
+    128,
+    256,
+    512,
+    1024
+  ]
+}

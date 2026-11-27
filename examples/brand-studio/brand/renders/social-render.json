@@ -1,0 +1,82 @@
+{
+  "script": "brdrender",
+  "version": "0.1.0",
+  "tools": {
+    "resvg": "0.50.0"
+  },
+  "files": [
+    "brand/social.svg"
+  ],
+  "luminance_cut": 0.5,
+  "findings": [
+    {
+      "id": "brd:CRF-02 brd:CAP-02 brd:EVD-01",
+      "status": "review",
+      "file": "brand/renders/social-16.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-02 brd:CAP-02 brd:EVD-01",
+      "status": "review",
+      "file": "brand/renders/social-32.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-02 brd:CAP-02 brd:EVD-01",
+      "status": "review",
+      "file": "brand/renders/social-64.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-01",
+      "status": "review",
+      "file": "brand/renders/social-mono.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-01",
+      "status": "review",
+      "file": "brand/renders/social-mono-inverted.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-05",
+      "status": "review",
+      "file": "brand/renders/social-mirror.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-05",
+      "status": "review",
+      "file": "brand/renders/social-rot90.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:CRF-05",
+      "status": "review",
+      "file": "brand/renders/social-rot180.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    },
+    {
+      "id": "brd:TYP-03 brd:CRF-06",
+      "status": "review",
+      "file": "brand/renders/social-display.png",
+      "evidence": "render",
+      "finding": "render written; a reviewer must look at it"
+    }
+  ],
+  "summary": {
+    "fail_must": 0,
+    "fail_should": 0,
+    "review": 9,
+    "waived": 0
+  }
+}

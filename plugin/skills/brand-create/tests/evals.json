@@ -1,0 +1,36 @@
+{
+  "skill_name": "brand-create",
+  "note": "Trigger-accuracy prompts, run by hand (docs/testing.md); not run in CI.",
+  "evals": [
+    {
+      "id": "brand-create-1",
+      "prompt": "I'm launching a small tool that helps teams find lost files. Give me a logo and a name lockup in SVG.",
+      "expect_trigger": true
+    },
+    {
+      "id": "brand-create-2",
+      "prompt": "Here is the story of my bakery: three generations, a wood oven, a cat named Pip. Draw a mark and a brand sheet.",
+      "expect_trigger": true
+    },
+    {
+      "id": "brand-create-3",
+      "prompt": "Make me an icon set and an app icon for a habit-tracking side project, based on this description of the idea.",
+      "expect_trigger": true
+    },
+    {
+      "id": "brand-create-no-1",
+      "prompt": "Which chart type should I use for monthly revenue by region?",
+      "expect_trigger": false
+    },
+    {
+      "id": "brand-create-no-2",
+      "prompt": "Review this existing logo.svg against craft rules and tell me what is wrong.",
+      "expect_trigger": false
+    },
+    {
+      "id": "brand-create-no-3",
+      "prompt": "Make a narrated explainer video about our product.",
+      "expect_trigger": false
+    }
+  ]
+}

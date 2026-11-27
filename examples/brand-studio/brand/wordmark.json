@@ -1,0 +1,47 @@
+{
+  "script": "brdtext",
+  "version": "0.1.0",
+  "tools": {
+    "fontTools": true,
+    "uharfbuzz": true
+  },
+  "font": {
+    "family": "Space Grotesk Light",
+    "version": "Version 2.000",
+    "licence": "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL",
+    "licence_url": "https://scripts.sil.org/OFL",
+    "shaping": "uharfbuzz",
+    "tracking": 0,
+    "size": 96,
+    "weight": 700.0,
+    "opsz": null,
+    "text": "brand-studio"
+  },
+  "output": "brand/wordmark.svg",
+  "findings": [
+    {
+      "id": "brd:TYP-01",
+      "status": "pass",
+      "evidence": "script",
+      "finding": "outlines written; font recorded"
+    },
+    {
+      "id": "brd:TYP-02",
+      "status": "review",
+      "evidence": "script",
+      "finding": "licence field says: This Font Software is licensed under the SIL Open Font License, Version 1.1. Thi... https://scripts.sil.org/OFL (a hint, not proof; full text in the JSON record)"
+    },
+    {
+      "id": "brd:TYP-03",
+      "status": "review",
+      "evidence": "script",
+      "finding": "inspect pairs on the display render"
+    },
+    {
+      "id": "brd:TYP-07",
+      "status": "pass",
+      "evidence": "script",
+      "finding": "the font has a glyph for every character of the name"
+    }
+  ]
+}

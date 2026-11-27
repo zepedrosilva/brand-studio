@@ -1,0 +1,9 @@
+.claude/settings.local.json
+CLAUDE.local.md
+.venv/
+.remember/
+.deps/
+**/brand/live/server.json
+__pycache__/
+*.pyc
+.DS_Store

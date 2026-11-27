@@ -1,0 +1,25 @@
+name: Bug or wrong finding
+description: A script error, a broken step, or a review finding that is wrong (a false positive or a missed defect).
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you ran, what you expected and what you got. Quote the finding line with its rule ID (for example brd:CRF-02) if it is about a review.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: The smallest SVG, brief or narrative that shows it. Attach the SVG if you can; remove anything private first.
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: brand-studio version, Claude Code version, model, and which optional tools are installed (resvg, rsvg-convert, fontTools).
+    validations:
+      required: true

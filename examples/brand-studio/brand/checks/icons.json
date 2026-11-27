@@ -1,0 +1,36 @@
+{
+  "script": "brdcheck",
+  "version": "0.1.0",
+  "thresholds": "references/thresholds.md",
+  "tools": {},
+  "files": [
+    "brand/icons/brief.svg",
+    "brand/icons/code.svg",
+    "brand/icons/concepts.svg",
+    "brand/icons/export.svg",
+    "brand/icons/review.svg",
+    "brand/icons/rules.svg"
+  ],
+  "rules_checked": [
+    "CTR-01",
+    "CTR-02",
+    "CTR-03",
+    "CTR-04",
+    "CTR-05",
+    "CAP-01",
+    "CAP-03",
+    "CRF-03",
+    "CRF-04",
+    "TYP-01",
+    "SEC-01"
+  ],
+  "brief_rules_checked": [],
+  "exports_rules_checked": [],
+  "findings": [],
+  "summary": {
+    "fail_must": 0,
+    "fail_should": 0,
+    "review": 0,
+    "waived": 0
+  }
+}

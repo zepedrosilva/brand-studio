@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <title>Concept B</title>
+  <g id="handle" fill="#000000">
+    <rect x="112" y="16" width="32" height="112"/>
+  </g>
+  <g id="head" fill="#000000">
+    <path fill-rule="evenodd" d="M128 96 L200 168 L128 240 L56 168 Z M128 136 L96 168 L128 200 L160 168 Z"/>
+  </g>
+</svg>

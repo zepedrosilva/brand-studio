@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Brand design brief</title>
+<style>
+:root{color-scheme:light;--ink:#171717;--muted:#5f6368;--faint:#8a8f96;--line:#e5e7eb;--soft:#f6f7f8;--accent:#171717;--ok:#14532d;--ok-bg:#e8f5ec;--warn:#7a4b00;--warn-bg:#fdf3dc;--bad:#8c1d18;--bad-bg:#fdeceb;
+--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:#fff;color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,dl,figure{margin:0}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:0 max(16px,env(safe-area-inset-left,0px))}
+.topbar-in{max-width:1180px;margin:0 auto;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.crumb{font:600 13px var(--sans);letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb span{color:var(--faint);font-weight:500}
+.live{display:flex;align-items:center;gap:8px;font:500 13px var(--sans);color:var(--muted);white-space:nowrap}
+.dot{width:8px;height:8px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:pulse 1.8s infinite}
+.dot.off{background:var(--faint);animation:none}
+@keyframes pulse{70%{box-shadow:0 0 0 7px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}html{scroll-behavior:auto}}
+.shell{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:210px minmax(0,1fr);gap:56px;padding:0 max(16px,env(safe-area-inset-left,0px)) 96px}
+nav.toc{position:sticky;top:52px;align-self:start;padding:36px 0;font-size:13.5px;max-height:calc(100vh - 52px);overflow:auto}
+nav.toc p{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin:0 0 10px}
+nav.toc a{display:flex;gap:10px;padding:5px 0;color:var(--muted);text-decoration:none;border-left:2px solid transparent;padding-left:10px;margin-left:-12px}
+nav.toc a b{font-weight:500;color:var(--faint);min-width:1.4em;font-variant-numeric:tabular-nums}
+nav.toc a:hover{color:var(--ink)}
+nav.toc a.on{color:var(--ink);border-left-color:var(--ink);font-weight:600}
+nav.toc .gap{height:14px}
+main{min-width:0;padding-top:48px}
+.cover{display:grid;gap:22px;padding-bottom:44px;border-bottom:1px solid var(--line)}
+.eyebrow{font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 clamp(34px,5.4vw,56px)/1.04 var(--sans);letter-spacing:-.03em}
+.coverrow{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.coverrow img.cm{width:96px;height:96px;object-fit:contain;flex:none}
+.lede{font-size:18px;line-height:1.55;color:#2c2f33;max-width:60ch}
+.facts{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.facts div{flex:1 1 150px;background:#fff;padding:14px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 -1px -1px 0}
+.facts dt{font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.facts dd{margin:4px 0 0;font-size:14.5px;font-weight:500}
+section.sec{padding:52px 0 8px}
+section.sec>header{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+section.sec>header .n{font:600 13px var(--mono);color:var(--faint)}
+h2{font:650 26px/1.2 var(--sans);letter-spacing:-.02em}
+h3{font:650 16px/1.3 var(--sans);margin:22px 0 8px}
+.sub{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin:26px 0 10px}
+p+p{margin-top:12px}
+.prose{max-width:66ch}.prose p{font-size:17px}
+.note{font-size:13.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:12px;margin-top:14px;max-width:66ch}
+.card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:#fff}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border:1px solid var(--line);border-radius:99px;font-size:13.5px;font-weight:500;background:#fff}
+.chip.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip.ok{background:var(--ok-bg);color:var(--ok);border-color:transparent}.chip.warn{background:var(--warn-bg);color:var(--warn);border-color:transparent}.chip.bad{background:var(--bad-bg);color:var(--bad);border-color:transparent}
+.statement{font:500 21px/1.45 var(--sans);letter-spacing:-.01em;max-width:62ch;padding:22px 24px;border:1px solid var(--line);border-radius:14px;background:var(--soft)}
+.own{display:flex;align-items:baseline;gap:14px;margin-top:16px}.own b{font:700 34px var(--sans);letter-spacing:-.02em}.own span{color:var(--muted);font-size:14px}
+.stage{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.panel{border-radius:14px;border:1px solid var(--line);min-height:210px;display:grid;place-items:center;padding:28px;position:relative}
+.panel img{max-width:100%;height:150px;object-fit:contain}
+.panel small{position:absolute;left:14px;bottom:10px;font:500 11.5px var(--sans);opacity:.7}
+.sizes{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap;padding:18px 20px}
+.sizes figure{display:grid;gap:8px;justify-items:start}.sizes img{image-rendering:auto}.sizes figcaption{font-size:12px;color:var(--muted)}
+.sw{display:grid;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.sw .pair{display:grid;grid-template-columns:1fr 1fr;height:92px}
+.sw .pair div{display:flex;align-items:flex-end;padding:8px 10px;font:500 11.5px var(--mono)}
+.sw .meta{padding:12px 14px;font-size:13.5px;display:grid;gap:2px}.sw .meta b{font-size:15px}.sw .meta span{color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px}.tw table td:first-child,.tw table th:first-child{padding-left:16px}.tw tr:last-child td{border-bottom:0}
+.files{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.file{border:1px solid var(--line);border-radius:12px;overflow:hidden;display:grid}
+.file .th{height:110px;display:grid;place-items:center;padding:14px;background:#fff}.file .th img{max-width:100%;max-height:82px}
+.file .th.dk{background:#1d1d1f}.file .th.tl{background:var(--soft)}
+.file div.t{padding:10px 12px;border-top:1px solid var(--line);font-size:13px;display:grid;gap:1px}.file div.t b{font:600 12.5px var(--mono);word-break:break-all}.file div.t span{color:var(--muted)}
+.cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.cc{border:1px solid var(--line);border-radius:14px;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto}
+.cc.picked{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.cc .im{background:#fff;display:grid;place-items:center;padding:22px;border-bottom:1px solid var(--line)}.cc .im img{height:150px;max-width:100%;object-fit:contain}
+.cc .bd{padding:14px 16px;display:grid;gap:6px;align-content:start}.cc .bd b{font-size:15px}.cc .bd p{font-size:13.5px;color:var(--muted)}
+.cc .ft{padding:12px 16px;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cc .px{display:flex;gap:10px;align-items:center}.cc .px img{width:16px;height:16px;image-rendering:auto}
+button,.btn{font:600 14px var(--sans);border-radius:8px;border:1px solid var(--ink);background:var(--ink);color:#fff;padding:9px 16px;cursor:pointer;text-decoration:none;display:inline-block}
+button.ghost,.btn.ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+button:disabled{opacity:.45;cursor:not-allowed}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #2563eb;outline-offset:2px}
+.ask{border:1.5px solid var(--ink);border-radius:14px;padding:18px 20px;display:grid;gap:12px;background:#fff;margin:0 0 28px}
+.ask h3{margin:0}.ask .why{font-size:13.5px;color:var(--muted)}
+.ask label{display:flex;gap:10px;align-items:flex-start;font-size:15px;cursor:pointer}.ask input[type=text]{font:400 15px var(--sans);padding:10px 12px;border:1px solid #c7cbd1;border-radius:8px;width:100%}
+.tag{font:600 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:#fff;border-radius:99px;padding:2px 9px}
+.steps{list-style:none;padding:0;display:grid;gap:2px}
+.steps li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:8px 0;font-size:14.5px}
+.steps .ic{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:11px;color:#fff}
+.steps .done .ic{background:#16a34a;border-color:#16a34a}.steps .active .ic{border-color:var(--ink);background:#fff}.steps .active .ic:after{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink);animation:pulse2 1.2s infinite}
+@keyframes pulse2{50%{opacity:.25}}
+.steps .pending{color:var(--faint)}.steps small{display:block;color:var(--muted)}
+.md h1,.md h2,.md h3{font:650 17px/1.3 var(--sans);margin:22px 0 8px}.md h1{font-size:19px}.md p{font-size:15px;margin:8px 0}.md ul{margin:8px 0;padding-left:22px;font-size:15px}.md li{margin:3px 0}.md code{font:12.5px var(--mono);background:var(--soft);padding:1px 5px;border-radius:4px}.md hr{border:0;border-top:1px solid var(--line);margin:22px 0}
+.md .tw{margin:12px 0}
+details{border:1px solid var(--line);border-radius:12px;padding:0 18px;margin-top:14px}
+details>summary{cursor:pointer;padding:13px 0;font-weight:600;font-size:15px;list-style:none}details>summary::-webkit-details-marker{display:none}
+details>summary:before{content:"+";display:inline-block;width:1.2em;color:var(--faint)}details[open]>summary:before{content:"–"}
+details[open]{padding-bottom:14px}
+.frame{width:100%;border:1px solid var(--line);border-radius:14px;height:2400px;background:#fff}
+.legal{border:1px solid var(--warn-bg);background:#fffaf0;border-radius:12px;padding:6px 20px 14px}
+.map{display:grid;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.map div{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:16px;padding:10px 16px;border-bottom:1px solid var(--line);font-size:14px}.map div:last-child{border-bottom:0}
+.map code{font:600 13px var(--mono)}.map .miss{color:var(--faint)}
+footer.end{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.empty{color:var(--faint);font-size:14px}
+@media (max-width:920px){.shell{grid-template-columns:1fr;gap:0}nav.toc{display:none}main{padding-top:32px}.map div{grid-template-columns:1fr;gap:2px}}
+@media print{.topbar,nav.toc,.ask,button,.btn{display:none!important}.shell{display:block;padding:0}section.sec{break-inside:auto;padding-top:28px}.card,.cc,.file,.sw,figure{break-inside:avoid}.frame{height:1500px}details{display:block}details>summary{display:none}details>*:not(summary){display:block}body{font-size:12.5pt}}
+</style>
+</head>
+<body>
+<noscript><p style="padding:24px;font:16px sans-serif">This page needs JavaScript to show the brief. The files are in the same folder.</p></noscript>
+<div class="topbar"><div class="topbar-in"><div class="crumb" id="crumb">Brand design brief</div><div class="live" id="live"></div></div></div>
+<div class="shell"><nav class="toc" id="toc" aria-label="Contents"></nav><main id="main"></main></div>
+<script>
+const STATE = {"steps": [{"id": "brief", "title": "Brief", "status": "done", "note": ""}, {"id": "shortlist", "title": "Shortlist", "status": "done", "note": ""}, {"id": "concepts", "title": "Three concepts", "status": "done", "note": ""}, {"id": "review", "title": "Blind review", "status": "done", "note": ""}, {"id": "pick", "title": "Your pick", "status": "done", "note": ""}, {"id": "kit", "title": "Kit: palette, wordmark, lockups", "status": "done", "note": ""}, {"id": "story", "title": "Story and brand sheet", "status": "done", "note": ""}, {"id": "export", "title": "Exports and applications page", "status": "done", "note": ""}, {"id": "final", "title": "Final review", "status": "done", "note": ""}], "questions": [{"id": "audience", "text": "Who sees the brand first? Suggested because the narrative names developers who can build software but not design an identity.", "suggest": "Developers who build apps but have no brand or design background", "options": [], "kind": "text", "status": "answered", "answer": "Developers who build apps but have no brand or design background", "asked": "2026-11-27T11:00:22+0000", "answered": "2026-11-27T11:22:00+0000"}, {"id": "positioning", "text": "Positioning line (for, who, that; unlike). Suggested from the essence and the tension in the narrative.", "suggest": "For developers who build apps without a design background, brand-studio is a Claude Code plugin that drafts a full brand identity as checked SVG; unlike asking a model for a logo, every mark is proven against numbered, sourced rules before you see it", "options": [], "kind": "text", "status": "answered", "answer": "For developers who build apps without a design background, brand-studio is a Claude Code plugin that drafts a full brand identity as checked SVG; unlike asking a model for a logo, every mark is proven against numbered, sourced rules before you see it", "asked": "2026-11-27T11:00:22+0000", "answered": "2026-11-27T11:22:07+0000"}, {"id": "own-word", "text": "One word the brand should own. Suggested: proven, because checking before showing is what sets it apart from asking a model for a logo.", "suggest": "proven", "options": [], "kind": "text", "status": "answered", "answer": "checked", "asked": "2026-11-27T11:00:22+0000", "answered": "2026-11-27T13:02:48+0000"}, {"id": "pick", "text": "Pick one concept. A (compass): incomplete, brd:CRF-02 still in review at 16 px; name test partly. B (branding iron): pass with findings; name test no (reads as a pin or plumb bob). C (code brackets around a diamond): pass with findings; name test yes; tightest gap about 1 px at 16 px; may read as an eye. Still assumed in the brief: audience, positioning, own-word.", "suggest": "c", "options": ["a", "b", "c"], "kind": "pick", "status": "answered", "answer": "c", "asked": "2026-11-27T11:04:56+0000", "answered": "2026-11-27T11:22:57+0000"}, {"id": "story", "text": "Confirm the brand story (shown in the brief), or write your edits.", "suggest": "confirmed", "options": [], "kind": "text", "status": "answered", "answer": "confirmed (the rewrite, answered in the terminal)", "asked": "2026-11-27T11:30:10+0000", "answered": "2026-11-27T13:02:48+0000"}], "recommendation": {"concept": "c", "reason": "Strongest at every size and the only one whose blind guesses land on the narrative (code brackets: the developer's world holding one finished mark). The eye reading and the 1 px top gap are fixable as edits in the kit."}, "picked": "c", "run": {"status": "done", "started": "2026-11-27T10:59:33+0000", "finished": "2026-11-27T11:44:08+0000"}, "name": "brand-studio", "brief": {"concept": "two code brackets holding one finished shape: the developer's world framing the identity you leave with", "audience": "developers who build apps but have no brand or design background", "tone": "careful, rigorous, honest, practical", "avoid": "magic wands and sparkles (the AI clich\u00e9), paintbrushes and paint palettes (the design clich\u00e9), Bezier pen nibs and handles (the vector-tool clich\u00e9), gradients, mascots", "metaphor": "code angle brackets holding a single solid shape: a developer's world framing one finished mark (concept C, picked 2026-11-27) (shortlist: brief.md#shortlist)", "positioning": "for developers who build apps without a design background, brand-studio is a Claude Code plugin that drafts a full brand identity as checked SVG; unlike asking a model for a logo, every mark is checked against numbered, sourced rules before you see it", "own-word": "checked", "assets": "the vermilion diamond held inside two ink brackets; the even channel between them", "category-colours": "violet #7C3AED break: AI tools lean violet and violet-to-blue gradients (assumed); blue #2563EB break: the default colour of developer tools (assumed); multicolour break: design tools often use many hues (assumed)", "scope": "C", "wordmark-font": "Space Grotesk Version 2.000 (variable, wght 700), licence OFL-1.1, read at github.com/google/fonts ofl/spacegrotesk/OFL.txt, commit 5026800, 2026-11-27", "story-status": "confirmed", "pair-cue": "", "narrative": "`examples/brand-studio/narrative.md` (the plugin's own pitch, agreed with the user on 2026-11-27).", "story": ["Most developers can build an app but have never designed an identity for one. Ask a model for a logo and you get circles, gradients and broken letters, with no word about who owns them.", "brand-studio works the way a careful designer does: one idea, three concepts drawn in black, each checked and rendered before you see it, one pick, and a kit built by editing that pick. Every rule it applies has a number and a source.", "The mark is a pair of code brackets holding one finished shape: the developer's world, framing the identity you leave with. The shape carries the only colour; the rest is ink, and a lowercase wordmark that sits comfortably next to code."], "rationale": ["Filled in kit steps 2 and 3: one line per tone word, then palette and type. Never a colour meaning.", "careful: one accent only, used on one shape, so colour is never decoration; one type family, one weight in the wordmark.", "rigorous: every value comes from two OKLCH ramps with measured contrast; letters are shaped, kerned outlines, not drawn.", "honest: a plain warm neutral and near-black ink, no gradients or glow; lowercase, the name written as it is typed.", "practical: four roles, each with a light and a dark value, ready to drop into an app; a grotesque that reads at small sizes on screen.", "palette: breaks the category's violet and blue so the mark stands apart from AI and developer tools; a warm neutral keeps the accent the only saturated colour.", "type: Space Grotesk. A grotesque with technical details that sits beside code without looking like a code font; bold lowercase for the wordmark, matching the mark's weight. Text sizes not stated."], "shortlist": [{"n": 1, "line": "A drafting compass mid-arc: the instrument of careful construction, drawing the one circle everything is built on.", "kind": "literal", "score": "2+2+2+1+3 = 10", "chosen": "a"}, {"n": 2, "line": "The end of a branding iron, a simple geometric seal: the oldest meaning of \"brand\", a mark made once and made to last.", "kind": "literal", "score": "2+2+2+2+3 = 11", "chosen": "b"}, {"n": 3, "line": "Code angle brackets holding a single solid shape: a developer's world framing one finished mark.", "kind": "literal", "score": "2+2+2+2+2 = 10", "chosen": "c"}, {"n": 4, "line": "A set square with a circle resting on it: drafting tools as proof of construction.", "kind": "literal", "score": "2+1+2+1+2 = 8", "chosen": ""}, {"n": 5, "line": "An easel holding one blank square canvas: the studio waiting for the app's idea.", "kind": "literal", "score": "1+1+2+1+3 = 8", "chosen": ""}, {"n": 6, "line": "Three tiles, one raised: three concepts and a single pick.", "kind": "abstract", "score": "2+2+2+2+1 = 9", "chosen": ""}, {"n": 7, "line": "A check mark emerging from construction circles: a mark proven before it is shown.", "kind": "abstract", "score": "2+1+2+2+1 = 8", "chosen": ""}, {"n": 8, "line": "A grid with one filled cell growing into a shape: an identity built on a unit.", "kind": "abstract", "score": "1+2+2+1+1 = 7", "chosen": ""}, {"n": 9, "line": "A seal stamp pressing a square: approved, signed off.", "kind": "literal", "score": "1+1+2+2+2 = 8", "chosen": ""}, {"n": 10, "line": "Sparkles around a square (the AI clich\u00e9, no twist).", "kind": "abstract", "score": "0+0+2+1+1 = 4", "chosen": ""}], "assumed": "Assumed: none. Audience and positioning confirmed by the user on the live page; own-word \"checked\" (replacing the suggested \"proven\", which overclaimed), the vermilion brand colour and the story confirmed in review, 2026-11-27.", "roles": [{"role": "brand", "light": "#d33222", "dark": "#fe5f4b", "ramp": "vermilion", "lstep": 600, "dstep": 400, "cl": 4.53, "cd": 6.02}, {"role": "neutral", "light": "#766e6a", "dark": "#a59c98", "ramp": "stone", "lstep": 600, "dstep": 400, "cl": 4.57, "cd": 6.76}, {"role": "background", "light": "#fdf3ef", "dark": "#1b1412", "ramp": "stone", "lstep": 50, "dstep": 950}, {"role": "text", "light": "#2e2724", "dark": "#fdf3ef", "ramp": "stone", "lstep": 900, "dstep": 50, "cl": 13.44, "cd": 16.65}]}, "concepts": [{"id": "a", "line": "a drafting compass mid-arc, the instrument of careful construction drawing the one circle everything is built on.", "svg": "concepts/a/concept.svg", "renders": {"16": "concepts/a/renders/concept-16.png", "64": "concepts/a/renders/concept-64.png", "display": "concepts/a/renders/concept-display.png", "mono": "concepts/a/renders/concept-mono.png"}}, {"id": "b", "line": "the end of a branding iron, a simple geometric seal: the oldest meaning of \"brand\", a mark made once and made to last.", "svg": "concepts/b/concept.svg", "renders": {"16": "concepts/b/renders/concept-16.png", "64": "concepts/b/renders/concept-64.png", "display": "concepts/b/renders/concept-display.png", "mono": "concepts/b/renders/concept-mono.png"}}, {"id": "c", "line": "code angle brackets holding a single solid shape: a developer's world framing one finished mark.", "svg": "concepts/c/concept.svg", "renders": {"16": "concepts/c/renders/concept-16.png", "64": "concepts/c/renders/concept-64.png", "display": "concepts/c/renders/concept-display.png", "mono": "concepts/c/renders/concept-mono.png"}}], "logo": [{"file": "mark.svg", "role": "Master mark, flat colours", "dark": false, "tile": false}, {"file": "app-icon-dark.svg", "role": "Extra", "dark": true, "tile": false}, {"file": "app-icon.svg", "role": "Extra", "dark": false, "tile": false}, {"file": "favicon.svg", "role": "Extra", "dark": false, "tile": false}, {"file": "lockup-horizontal-reversed.svg", "role": "Side by side, dark backgrounds", "dark": true, "tile": false}, {"file": "lockup-horizontal.svg", "role": "Mark and name side by side", "dark": false, "tile": false}, {"file": "lockup-stacked-reversed.svg", "role": "Mark above name, dark backgrounds", "dark": true, "tile": false}, {"file": "lockup-stacked.svg", "role": "Mark above name", "dark": false, "tile": false}, {"file": "mark-mono.svg", "role": "One colour", "dark": false, "tile": false}, {"file": "mark-reversed.svg", "role": "For dark backgrounds", "dark": true, "tile": false}, {"file": "social.svg", "role": "Extra", "dark": false, "tile": false}, {"file": "wordmark-reversed.svg", "role": "Outlined name, dark backgrounds", "dark": true, "tile": false}, {"file": "wordmark.svg", "role": "Outlined name", "dark": false, "tile": false}], "exports": {"files": 13, "sizes": [16, 32, 48, 64, 128, 256, 512, 1024], "zip": "exports/brand-studio-brand-assets.zip"}, "checks": {"fail_must": 0, "fail_should": 0, "review": 2, "waived": 0}, "review": "# Review: after the recolour\n\nReviewer: `brand-reviewer` (sonnet, high), 2026-11-27, after the maintainer replaced the brand colour (a burnt orange that read brown) with vermilion #D33222 (light) and #FE5F4B (dark), approved a rewritten story and set the word to own to \"checked\".\n\n**Verdict: pass with findings.** 0 MUST fail, 0 SHOULD fail [script].\n\n- Every fill in the brand SVGs, icons and exports is a roles-table value; the old brand colour appears in no asset [script].\n- brd:PAL-09: 21 of 21 pairs in the regenerated `applications.html` clear their floor [script]. The other colours on that page are its own chrome (pass and fail badges, a mock browser tab), not brand colours.\n- brd:CRF-01, CRF-02, CAP-02: the diamond and brackets stay distinct at 16 px and in one colour; the vermilion diamond reads on cream and on dark [render].\n- brd:CAP-03, CRF-03 on `social.svg`: outlined lettering on a tile, accepted as before.\n- Legal (brd:LGL-02): resemblance to common developer-tool bracket marks; no search was done; not a clearance.\n\nThe sections below are the earlier passes, kept as the record; colour values in them are updated where they described the current kit.\n\n---\n\n# Review: final kit\n\nReviewer: `brand-reviewer` (sonnet, high), on the whole brand folder after the kit. Written by the main session from the returned verdict, 2026-11-27.\n\n**Verdict: pass with findings.** 0 MUST fail, 0 SHOULD fail; 3 script `review` items, all resolved below.\n\nScope: 13 top-level SVGs (mark, mono, reversed, wordmark and reversed, four lockups, favicon, two app icons, social image), 6 icons and the export set. Scripts: brdcheck with `--brief`, `--exports` and `--icons`; brdinuse output read. Renders: resvg 0.50.0, about 25 PNGs looked at.\n\n## Passing MUST rules\n\n- brd:CTR-01 to CTR-05, CAP-01, SEC-01 on every file [script]. No text, tspan, image, href, style, script or gradient in any SVG or export.\n- brd:TYP-01, TYP-02 [script]: the wordmark is outlined; Space Grotesk 2.000, weight 700, OFL-1.1, source commit recorded.\n- brd:CRF-01, CRF-02 [render]: legible in one colour, inverted, and at 16 and 32 px; the 1 px channel at 16 px still reads.\n- brd:CTR-06 [script]: the export set is complete.\n- brd:PAL-01 to PAL-03, PAL-08, EVD-02 to EVD-04 [script]: every fill is a declared role value.\n\n## Findings\n\n- review brd:POS-05: the story is a draft until the maintainer confirms it (a user action, not a defect).\n- pass brd:PAL-09: 21 of 21 pairs in `applications.html` clear their floor. Thin margins: neutral #766E6A on #FDF3EF at 4.57:1 (12 px small print) and brand #D33222 on #FDF3EF at 4.53:1; re-run brdinuse after any change to those roles.\n- note brd:CAP-02: the channel is exactly 1 px at 16 px, at the limit; clean from 32 px up.\n- note brd:CRF-05: no known shape in mirror or rotation; the silhouette can read as an eye.\n- note brd:SET-01 to SET-03 [judgment only]: brdcheck did not run the set rules on `icons/`. All six icons share viewBox 24, stroke 2, square caps, mitre joins and no fill, matching `style-spec.json`. Logged as a plugin issue.\n- note brd:CNC-03 [judgment]: guesses at the final review were code brackets around a diamond, an eye, a gem in a frame: developer tooling reads, \"brand\" does not.\n\n## Review items resolved\n\n- brd:CAP-03 and brd:CRF-03 on `social.svg`: dismissed; the anchors and off-grid points are the outlined letters, exempt by design in wordmark and lockup files.\n- brd:CRF-01 on the mono render of an already reversed lockup: dismissed as a renderer artefact; the reversed display renders on dark read.\n- brd:CRF-02 on the horizontal lockup at 16 px: dismissed; its minimum is 120 px wide, and the 16 px asset is the mark.\n- brd:TYP-03, brd:CRF-06: confirmed clean; even letter spacing, no effects.\n\n## Legal (brd:LGL-01 to LGL-03, US only)\n\nWarnings, not decisions. AI-drafted, so copyright may not attach to the mark as drawn. Nobody has checked the mark or the name for trademark clearance: search the USPTO records, including the image search, before relying on it. Space Grotesk is OFL-1.1. Resemblance: generic code-bracket icons, and an eye. Only US notes exist; the brief's jurisdiction is worldwide.\n\n## Run notes\n\n- Two plugin issues found by this run: concept renders overwrite each other because every concept file is named `concept.svg`; and `brdcheck --icons` does not run the `SET-*` rules.\n\n---\n\n# Review: concepts at the checkpoint\n\nReviewer: `brand-reviewer` (sonnet, high), blind: given the three `concept.svg` files only, not the name, brief or notes. Written by the main session from the returned verdict, 2026-11-27.\n\n## Verdicts\n\n| Concept | Verdict |\n|---|---|\n| A (drafting compass) | incomplete after one edit round: brd:CRF-02 (MUST) is `review`; before the edit it was `fail` |\n| B (branding iron) | pass with findings |\n| C (code brackets) | pass with findings |\n\nScope: 3 files; brdcheck run (0 fail, 0 review; no brief, no font tools); renders run with resvg into `brand/renders/a`, `b`, `c`; check output `brand/checks/review.json`.\n\n## Name test (brd:CNC-03, judgment)\n\nGuesses from the renders alone, before any name was known; scored afterwards by the main session against the narrative.\n\n| Concept | Guesses | Score |\n|---|---|---|\n| A | compass or dividers drawing an arc; sickle or hook; clock hand or timer | partly (construction reads; the brand idea does not) |\n| B | plumb bob or pendulum; map pin or keyhole; key or hanging sign | no (no link to \"brand\" or to app identity) |\n| C | code brackets `\u003c\u003e`; eye; gem or data node | yes (the developer's world reads first) |\n\n## Findings\n\nA\n- fail brd:CRF-02 (MUST): the thin arc and tapering legs collapse at 16 px into a squiggle with no compass reading; weak at 32 px. Fix: thicken the arc and legs or add a small-size variant. [render]\n- fail brd:CAP-02 (SHOULD): the gap between the leg tip and the arc is about 0.5 px at 16 px and closes. [render]\n- note brd:CRF-04: weight lopsided to the upper right. brd:CRF-05: rotated 180 degrees it reads as a lightbulb or check mark.\n\nB\n- pass brd:CRF-01, brd:CRF-02 [render]\n- review brd:CRF-05 (SHOULD): upright it can read as a pin or key; rotated, a key or signpost. No known mark; the stem on a diamond is generic. [render]\n\nC\n- pass brd:CRF-01, brd:CRF-02 [render]\n- review brd:CAP-02 (SHOULD): the top gap between the brackets is 16 of 256 units, about 1 px at 16 px; holds in the render but is the tightest point. [render]\n- note brd:CRF-05: rotated 90 degrees it forms a hexagonal gem; symmetric, so mirroring changes nothing.\n\nAt 16 px: C reads cleanly, B holds as a pin silhouette, A fails. In one colour all three are pure black and read the same on white and reversed.\n\nA after the edit round (designer self-check; brdcheck 0 MUST failures)\n- review brd:CRF-02 (MUST): at 16 px it reads as a bowl with a small peak, about 2 px of compass; reads at 32 px. Next step: a simplified 16 px variant. [render]\n- pass brd:CAP-02: the pencil leg now joins the arc, so no gap can close. [render]\n- pass brd:CRF-04 [script]; review brd:CRF-03: 40 coordinates off the 8 grid, all from exact 30-degree construction.\n\n## Legal (brd:LGL-02)\n\nResemblance only, not a clearance. C resembles generic code-bracket icons, B generic pin and plumb-bob icons, A generic compass icons. Run the trademark and design-mark searches listed in the brand sheet (US-centred) before relying on any mark.\n\n## Run notes\n\n- The three concept files share the name `concept.svg`, so default renders overwrite each other; the reviewer rendered into per-concept folders. Logged as a plugin issue.\n", "sheet": "# brand-studio: brand sheet\n\nFirst-draft identity made with brand-studio on 2026-11-27. A strong draft, not a professional identity; review it with a designer before wide use.\n\n## Story\n\nMost developers can build an app but have never designed an identity for one. Ask a model for a logo and you get circles, gradients and broken letters, with no word about who owns them.\n\nbrand-studio works the way a careful designer does: one idea, three concepts drawn in black, each checked and rendered before you see it, one pick, and a kit built by editing that pick. Every rule it applies has a number and a source.\n\nThe mark is a pair of code brackets holding one finished shape: the developer's world, framing the identity you leave with. The shape carries the only colour; the rest is ink, and a lowercase wordmark that sits comfortably next to code.\n\n## Concept\n\nTwo code brackets holding one finished shape: the developer's world framing the identity you leave with. The brackets run at 45 degrees and face inward around one solid diamond, built from three polygons on an 8-unit grid; the diamond's edges run parallel to the brackets, so the channel between them is the same width all round.\n\n## Positioning\n\n- Statement: for developers who build apps without a design background, brand-studio is a Claude Code plugin that drafts a full brand identity as checked SVG; unlike asking a model for a logo, every mark is checked against numbered, sourced rules before you see it (brd:POS-01)\n- Word to own: checked. The one word people should connect with the brand without being told; it steers the rationale and the copy\n- Distinctive assets: the vermilion diamond held inside two ink brackets, and the even channel between them; keep them unchanged in every file and every use (brd:POS-03)\n- Category colours: violet breaks (AI tools lean violet and violet-to-blue gradients); blue breaks (the default of developer tools); multicolour breaks (design tools). All three observations are assumed, not surveyed (brd:PAL-07)\n\n## Files\n\n| File | Use |\n|---|---|\n| `mark.svg` | Master, flat colours |\n| `mark-mono.svg` | One colour |\n| `mark-reversed.svg` | On dark backgrounds |\n| `wordmark.svg` | Outlined name |\n| `lockup-horizontal.svg` | Mark and name side by side |\n| `lockup-stacked.svg` | Mark above name |\n| `*-reversed.svg` | Wordmark and lockups for dark backgrounds |\n| `favicon.svg` | Browser tab |\n| `app-icon.svg`, `app-icon-dark.svg` | 1024 px square app icon, light and dark, no pre-rounded corners |\n| `social.svg` | 1200 by 630 social image: the horizontal lockup on the background colour |\n| `icons/` | Six interface icons and `style-spec.json` |\n\n## Downloads (brd:CTR-06)\n\n- Everything in one file: `exports/brand-studio-brand-assets.zip`\n- Vector: `exports/svg/` (one SVG per file above)\n- Raster: `exports/png/`, each file at 16, 32, 48, 64, 128, 256, 512 and 1024 px\n- Applications: `applications.html` shows the kit in a phone app, a browser tab, an app icon, a web page, a dark card, a slide and a flyer, with every colour pair measured\n- Transparency: every PNG has a transparent background, so it sits on any colour; only tiles (`app-icon*`, `social*`, `favicon*`, `*-tile*`) carry their own background. Use the reversed files on dark backgrounds.\n\n## Palette\n\n| Name | Hex | Role | Contrast against background (brd:EVD-02) |\n|---|---|---|---|\n| text | #2E2724 | mark (brackets) | 13.44:1 |\n| brand | #D33222 | mark (diamond) | 4.53:1 |\n| background | #FDF3EF | background | n/a |\n\n### Palette roles\n\n| Role | Light | Dark | Ramp | Contrast on background, light / dark (brd:EVD-02) |\n|---|---|---|---|---|\n| brand | #D33222 | #FE5F4B | vermilion 600/400 | 4.53:1 / 6.02:1 |\n| neutral | #766E6A | #A59C98 | stone 600/400 | 4.57:1 / 6.76:1 |\n| background | #FDF3EF | #1B1412 | stone 50/950 | n/a |\n| text | #2E2724 | #FDF3EF | stone 900/50 | 13.44:1 / 16.65:1 |\n\nRamps are built in OKLCH: vermilion at hue 30 and chroma 0.20, stone at hue 45 and chroma 0.012, so the neutral leans toward the brand hue. The brand values are solved at the lightest point that clears 4.5:1, so the colour is as bright as the contrast floor allows. A first pick, a darker burnt orange, was replaced at review because it read brown. The light neutral sits at lightness 0.545, between two ramp steps, because the step above it measured 4.44:1 and ratios are never rounded up.\n\nColour-blind check (brd:EVD-03, brd:EVD-04): n/a. There is no `brand-2` and no `status` rows, so no pair has to be told apart by colour alone; the brackets and the diamond also differ by 13.44:1 against 4.53:1 in lightness and by shape.\n\n| Pair | Contrast between them | Deutan | Protan | Tritan (review) |\n|---|---|---|---|---|\n| n/a | n/a | n/a | n/a | n/a |\n\nWhy this palette: breaks the category's violet and blue so the mark stands apart from AI and developer tools; a warm neutral keeps the accent the only saturated colour.\n\nDark set: `mark-reversed.svg`, `wordmark-reversed.svg`, both reversed lockups and `app-icon-dark.svg`, all in the dark role values.\n\n## Typography\n\nSpace Grotesk Version 2.000 (variable font, weight 700), OFL-1.1, licence read at github.com/google/fonts `ofl/spacegrotesk/OFL.txt`, commit 5026800, on 2026-11-27. The wordmark is outlined; the font is not needed to display it.\n\n- Families: one, Space Grotesk (brd:TYP-05)\n- Text sizes: none stated (brd:TYP-06)\n- Why this type: a grotesque with technical details that sits beside code without looking like a code font; bold lowercase for the wordmark, matching the mark's weight. Careful: one family, one weight. Rigorous: shaped, kerned outlines, not drawn letters. Honest: lowercase, the name written as it is typed. Practical: reads at small sizes on screen.\n\n## Clear space and minimum size\n\n- Clear space: one bracket width (the horizontal thickness of a bracket arm, 40 of the mark's 256 units) on every side.\n- Minimum size: mark 16 px; horizontal lockup 120 px wide; stacked lockup 80 px wide. The lockup minimums are an assumption from the renders, not a measured rule.\n\n## Misuse\n\n- Do not stretch, rotate, recolour outside the palette, add effects or outline the mark.\n- Do not set the name in live text in place of the wordmark.\n- Do not place the full-colour mark on a background that fails the contrast table; use the mono or reversed file.\n- Do not swap the colours of the brackets and the diamond: the diamond is the only accent.\n\n## Evidence\n\nChecks run: brdcheck 0.1.0, brdrender 0.1.0 with resvg 0.50.0, brdtext 0.1.0 with fontTools 4.68.0 and uharfbuzz 0.57.0, brdinuse 0.1.0. On `social.svg`, the anchor count (brd:CAP-03) and grid (brd:CRF-03) items come from the outlined letters, which the script exempts only in files named `wordmark*` or `lockup*`; resolved as expected for lettering. Latest review: `review.md`, verdict in that file.\n\n## Legal notes (brd:LGL-01)\n\nWarnings only, not legal advice. These notes cover the United States only; other jurisdictions were not researched. Sources and recheck dates: `brand-core/references/legal.md` in the brand-studio plugin.\n\n- **Copyright.** This identity was drafted with an AI model. In the US, the Copyright Office's view is that prompts alone do not make a person the author of the output; human selection, arrangement and changes may be protectable. The mark as drawn may not be protected by copyright. (US Copyright Office report on copyrightability, January 2025, and the Supreme Court's refusal to hear Thaler v. Perlmutter, March 2026; checked 2026-11-18, recheck 2027-03-01.)\n- **Trademark.** Nobody has checked whether this mark or name is clear to use or register. That is your job before you rely on it: search the USPTO trademark records, including its image search (a beta), and get a professional clearance search before filing. (USPTO image search beta, April 2026; checked 2026-11-18, recheck 2027-04-01.)\n- **Fonts.** Space Grotesk, OFL-1.1. OFL fonts may be used in logos; check the family's own licence file. (OFL FAQ 1.1-update8; checked 2026-11-18, recheck 2027-05-01.)\n- **Generators.** No hosted image or vector generator was used.\n- **Resemblance.** The reviewer noted that the mark resembles generic code-bracket icons, and the designer noted it can read as an eye (brd:LGL-02). Run the searches above.\n\n## Provenance (brd:LGL-04)\n\n- Narrative and brief: the narrative was written by the maintainer with Claude; the brief was drafted by Claude, with the audience and positioning confirmed by the maintainer.\n- Chosen concept: C (code brackets) of three, picked by the maintainer on the live page on 2026-11-27, after an independent blind review.\n- Human decisions after the pick: the maintainer rejected the first brand colour (it read brown) and chose vermilion from six measured options, approved a rewritten story after an editorial review, and replaced the suggested word to own, \"proven\", with \"checked\".\n- Human changes after the pick: none to the geometry. Colours, the wordmark, lockups, icons and extras were made by Claude as edits of the picked master; the maintainer reviews them before the kit is published.\n", "legal": "## Legal notes (brd:LGL-01)\n\nWarnings only, not legal advice. These notes cover the United States only; other jurisdictions were not researched. Sources and recheck dates: `brand-core/references/legal.md` in the brand-studio plugin.\n\n- **Copyright.** This identity was drafted with an AI model. In the US, the Copyright Office's view is that prompts alone do not make a person the author of the output; human selection, arrangement and changes may be protectable. The mark as drawn may not be protected by copyright. (US Copyright Office report on copyrightability, January 2025, and the Supreme Court's refusal to hear Thaler v. Perlmutter, March 2026; checked 2026-11-18, recheck 2027-03-01.)\n- **Trademark.** Nobody has checked whether this mark or name is clear to use or register. That is your job before you rely on it: search the USPTO trademark records, including its image search (a beta), and get a professional clearance search before filing. (USPTO image search beta, April 2026; checked 2026-11-18, recheck 2027-04-01.)\n- **Fonts.** Space Grotesk, OFL-1.1. OFL fonts may be used in logos; check the family's own licence file. (OFL FAQ 1.1-update8; checked 2026-11-18, recheck 2027-05-01.)\n- **Generators.** No hosted image or vector generator was used.\n- **Resemblance.** The reviewer noted that the mark resembles generic code-bracket icons, and the designer noted it can read as an eye (brd:LGL-02). Run the searches above.", "verdict": null, "applications": true, "folder": [{"path": "index.html", "what": "This page: the live view while the run lasts, the report afterwards", "exists": true}, {"path": "brief.md", "what": "The brief: narrative, declaration, shortlist, palette roles, rationale, story", "exists": true}, {"path": "brand-sheet.md", "what": "The brand sheet: story, positioning, palette, type, clear space, legal notes", "exists": true}, {"path": "review.md", "what": "The latest review verdict, with the earlier concept review below it", "exists": true}, {"path": "*.svg", "what": "The logo files: master mark, variants, wordmark and lockups (SVG, outlined, no live text)", "exists": true}, {"path": "wordmark.json", "what": "Record of the font and the outlining step", "exists": true}, {"path": "applications.html", "what": "The kit placed in everyday applications, every colour pair measured", "exists": true}, {"path": "concepts/", "what": "The three greyscale concepts, each with its notes and renders", "exists": true}, {"path": "exports/", "what": "The downloadable set: svg/, png/ (transparent), manifest.json and the zip", "exists": true}, {"path": "renders/", "what": "PNG renders the checks looked at", "exists": true}, {"path": "checks/", "what": "JSON output of brdcheck", "exists": true}, {"path": "live/", "what": "State of this page; safe to delete once the run is over", "exists": true}], "updated": "2026-11-27T13:02:48+0000", "version": "0.1.0"};
+(function(){
+"use strict";
+let S = STATE || {};
+const served = location.protocol === "http:" || location.protocol === "https:";
+let connected = false, fails = 0, token = null, ver = "";
+let frameBuilt = false, askSig = "";
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+const src = p => esc(p) + (ver ? "?v=" + encodeURIComponent(ver) : "");
+
+/* ---- small markdown renderer: headings, lists, tables, bold, italic, code, links ---- */
+function inline(t){
+  t = esc(t);
+  t = t.replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>").replace(/\*([^*]+)\*/g, "<i>$1</i>");
+  return t.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, a, u) => /^(https?:\/\/|[\w./#-]+$)/.test(u) ? '<a href="' + u + '" target="_blank" rel="noopener">' + a + "</a>" : a);
+}
+function md(text){
+  const lines = String(text || "").split("\n"); let out = "", i = 0;
+  while (i < lines.length){
+    const l = lines[i];
+    if (/^\s*$/.test(l)){ i++; continue; }
+    let m;
+    if ((m = l.match(/^(#{1,4})\s+(.*)$/))){ out += "<h" + m[1].length + ">" + inline(m[2]) + "</h" + m[1].length + ">"; i++; continue; }
+    if (/^---+\s*$/.test(l)){ out += "<hr>"; i++; continue; }
+    if (/^\s*\|/.test(l)){
+      const rows = []; while (i < lines.length && /^\s*\|/.test(lines[i])){ rows.push(lines[i]); i++; }
+      const cells = r => r.trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+      const head = cells(rows[0]); const body = rows.slice(2).map(cells);
+      out += '<div class="tw"><table><thead><tr>' + head.map(c => "<th>" + inline(c) + "</th>").join("") + "</tr></thead><tbody>" +
+        body.map(r => "<tr>" + r.map(c => "<td>" + inline(c) + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>"; continue;
+    }
+    if (/^\s*[-*]\s+/.test(l)){
+      let items = []; while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])){ items.push(lines[i].replace(/^\s*[-*]\s+/, "")); i++; }
+      out += "<ul>" + items.map(x => "<li>" + inline(x) + "</li>").join("") + "</ul>"; continue;
+    }
+    let para = []; while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,4}\s|\s*\||\s*[-*]\s|---)/.test(lines[i])){ para.push(lines[i]); i++; }
+    out += "<p>" + inline(para.join(" ")) + "</p>";
+  }
+  return '<div class="md">' + out + "</div>";
+}
+function mdSection(text, title){
+  const m = String(text || "").match(new RegExp("^## " + title + "[^\\n]*\\n([\\s\\S]*?)(?=^## |$(?![\\s\\S]))", "m"));
+  return m ? m[1].trim() : "";
+}
+
+/* ---- data helpers ---- */
+const B = () => S.brief || {};
+const role = (r, v) => ((B().roles || []).find(x => x.role === r) || {})[v];
+const bgLight = () => role("background", "light") || "#ffffff";
+const bgDark = () => role("background", "dark") || "#1d1d1f";
+const inkOn = hex => { const n = parseInt((hex || "#fff").slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255; return (0.2126*r + 0.7152*g + 0.0722*b) > 140 ? "#171717" : "#ffffff"; };
+const fmtDate = iso => { try { return new Date(iso).toLocaleDateString("en-GB", {day:"numeric", month:"long", year:"numeric"}); } catch(e){ return ""; } };
+const split = (s, sep) => String(s || "").split(sep).map(x => x.trim()).filter(Boolean);
+const done = () => S.run && S.run.status === "done";
+const hasFile = n => (S.logo || []).some(f => f.file === n);
+const markSrc = () => hasFile("mark.svg") ? "mark.svg" : ((S.concepts || []).find(c => c.id === S.picked) || {}).svg;
+
+/* ---- sections ---- */
+function secStory(){
+  const b = B(); if (!b.story || !b.story.length) return "";
+  const draft = (b["story-status"] || "") !== "confirmed" ? '<p class="note">Draft story, written from the brief. It is not confirmed yet.</p>' : "";
+  return '<div class="prose">' + b.story.map(p => "<p>" + esc(p) + "</p>").join("") + "</div>" + draft +
+    (b.narrative ? '<details><summary>The narrative this brief started from</summary><div class="md">' + md(b.narrative) + "</div></details>" : "");
+}
+function secPositioning(){
+  const b = B(); if (!b.positioning && !b.audience) return "";
+  let h = "";
+  if (b.positioning) h += '<p class="statement">' + esc(cap(b.positioning)) + "</p>";
+  if (b["own-word"]) h += '<div class="own"><b>' + esc(b["own-word"]) + "</b><span>The one word to own</span></div>";
+  h += '<div class="grid g2" style="margin-top:22px">';
+  if (b.audience) h += '<div class="card"><div class="sub" style="margin-top:0">Audience</div><p>' + esc(b.audience) + "</p></div>";
+  if (b.tone) h += '<div class="card"><div class="sub" style="margin-top:0">Tone</div><div class="chips">' + split(b.tone, ",").map(t => '<span class="chip">' + esc(t) + "</span>").join("") + "</div></div>";
+  if (b.assets) h += '<div class="card"><div class="sub" style="margin-top:0">Distinctive assets</div><p>' + esc(cap(b.assets)) + ". Keep them unchanged in every use.</p></div>";
+  if (b.avoid) h += '<div class="card"><div class="sub" style="margin-top:0">Avoid</div><p>' + esc(cap(b.avoid)) + "</p></div>";
+  h += "</div>";
+  const cats = split(b["category-colours"], ";").map(e => e.match(/^(.*?)\s*(#[0-9a-fA-F]{6})\s+(follow|break):\s*(.*)$/i)).filter(Boolean);
+  if (cats.length) h += '<div class="sub">Category colours</div><div class="grid g3">' + cats.map(m =>
+    '<div class="card" style="display:grid;gap:10px"><div style="display:flex;gap:10px;align-items:center"><span style="width:28px;height:28px;border-radius:8px;background:' + esc(m[2]) + ';border:1px solid var(--line)"></span><b>' + esc(cap(m[1])) + '</b><span class="chip" style="margin-left:auto">' + esc(m[3].toLowerCase()) + '</span></div><p style="font-size:13.5px;color:var(--muted)">' + esc(cap(m[4])) + "</p></div>").join("") + "</div>";
+  return h;
+}
+function secMark(){
+  const m = markSrc(); if (!m) return "";
+  const b = B(), dk = bgDark(), lt = bgLight();
+  const rev = hasFile("mark-reversed.svg") ? "mark-reversed.svg" : m;
+  const mono = hasFile("mark-mono.svg") ? "mark-mono.svg" : m;
+  let h = "";
+  if (b.concept) h += '<p class="prose" style="font-size:19px;line-height:1.5;margin-bottom:22px">' + esc(b.concept) + "</p>";
+  h += '<div class="stage"><div class="panel" style="background:' + esc(lt) + '"><img src="' + src(m) + '" alt="Mark on the light background"><small style="color:' + inkOn(lt) + '">Light background</small></div>' +
+    '<div class="panel" style="background:' + esc(dk) + '"><img src="' + src(rev) + '" alt="Mark on the dark background"><small style="color:' + inkOn(dk) + '">Dark background</small></div>' +
+    '<div class="panel" style="background:#fff"><img src="' + src(mono) + '" alt="Mark in one colour"><small>One colour</small></div></div>';
+  h += '<div class="sub">At small sizes</div><div class="card sizes">' + [16, 24, 32, 48, 64].map(s => '<figure><img src="' + src(m) + '" width="' + s + '" height="' + s + '" alt=""><figcaption>' + s + " px</figcaption></figure>").join("") + "</div>";
+  if (b.metaphor) h += '<p class="note">The idea in one line: ' + esc(b.metaphor.replace(/\s*\(shortlist:[^)]*\)\s*$/, "")) + "</p>";
+  return h;
+}
+function secColour(){
+  const rows = B().roles || []; if (!rows.length) return "";
+  const names = {};
+  let h = '<div class="grid g3">' + rows.map(r => {
+    const label = r.role === "status" ? "Status, " + (r.ramp || "") : cap(r.role);
+    return '<div class="sw"><div class="pair"><div style="background:' + esc(r.light) + ";color:" + inkOn(r.light) + '">' + esc(r.light) + '</div><div style="background:' + esc(r.dark) + ";color:" + inkOn(r.dark) + '">' + esc(r.dark) + '</div></div><div class="meta"><b>' + esc(label) + "</b><span>Light and dark" + (r.ramp ? " · ramp " + esc(r.ramp) + " " + r.lstep + "/" + r.dstep : "") + "</span>" +
+      (r.cl ? "<span>Contrast on background " + r.cl + ":1 / " + r.cd + ":1</span>" : "") + "</div></div>";
+  }).join("") + "</div>";
+  const pal = (B().rationale || []).find(x => /^palette:/i.test(x));
+  if (pal) h += '<p class="note">' + esc(cap(pal.replace(/^palette:\s*/i, ""))) + "</p>";
+  const cue = B()["pair-cue"]; if (cue) h += '<p class="note">Colour is not the only cue between paired colours: ' + esc(cue) + "</p>";
+  return h;
+}
+function secType(){
+  const b = B(); const tl = (b.rationale || []).find(x => /^type:/i.test(x)); if (!b["wordmark-font"] && !tl) return "";
+  let h = "";
+  if (hasFile("wordmark.svg")) h += '<div class="panel" style="background:' + esc(bgLight()) + ';min-height:150px;margin-bottom:18px"><img src="' + src("wordmark.svg") + '" alt="Wordmark" style="height:72px"></div>';
+  h += '<div class="grid g2">';
+  if (b["wordmark-font"]) h += '<div class="card"><div class="sub" style="margin-top:0">Typeface</div><p>' + esc(b["wordmark-font"]) + ".</p><p class=\"note\" style=\"margin-top:8px\">The wordmark is outlined, so the font is not needed to display it.</p></div>";
+  if (tl) h += '<div class="card"><div class="sub" style="margin-top:0">Why this type</div><p>' + esc(cap(tl.replace(/^type:\s*/i, ""))) + "</p></div>";
+  h += "</div>";
+  const tones = (b.rationale || []).filter(x => !/^(type|palette):/i.test(x));
+  if (tones.length) h += '<div class="sub">How the choices express the tone</div><div class="grid g2">' + tones.map(t => { const k = t.split(":")[0]; return '<div class="card"><b style="text-transform:capitalize">' + esc(k) + '</b><p style="font-size:14px;color:var(--muted);margin-top:4px">' + esc(cap(t.slice(k.length + 1).trim())) + "</p></div>"; }).join("") + "</div>";
+  return h;
+}
+function secFiles(){
+  const f = S.logo || []; if (!f.length) return "";
+  return '<div class="files">' + f.map(x => '<div class="file"><div class="th' + (x.dark ? " dk" : x.tile ? " tl" : "") + '"><img src="' + src(x.file) + '" alt="' + esc(x.file) + '"></div><div class="t"><b>' + esc(x.file) + "</b><span>" + esc(x.role) + "</span></div></div>").join("") + "</div>";
+}
+function secRules(){
+  const cs = mdSection(S.sheet, "Clear space and minimum size"), mu = mdSection(S.sheet, "Misuse"); if (!cs && !mu) return "";
+  return '<div class="grid g2">' + (cs ? '<div class="card"><div class="sub" style="margin-top:0">Clear space and minimum size</div>' + md(cs) + "</div>" : "") + (mu ? '<div class="card"><div class="sub" style="margin-top:0">Misuse</div>' + md(mu) + "</div>" : "") + "</div>";
+}
+function secApplications(){
+  if (!S.applications) return "";
+  return '<p class="prose" style="margin-bottom:16px">The kit placed in everyday applications, using only the colours in the palette. Every colour pair is measured against its floor.</p><div id="appFrame"></div><p class="note"><a href="applications.html" target="_blank" rel="noopener">Open the applications page on its own</a></p>';
+}
+function secQuality(){
+  const c = S.checks, v = S.verdict; if (!c && !v && !S.review) return "";
+  let h = '<div class="chips">';
+  if (v) h += '<span class="chip ' + (/fail|incomplete/i.test(v) ? "bad" : /findings/i.test(v) ? "warn" : "ok") + '">Review: ' + esc(v) + "</span>";
+  if (c) h += '<span class="chip ' + (c.fail_must ? "bad" : "ok") + '">' + c.fail_must + " must failures</span><span class=\"chip " + (c.fail_should ? "bad" : "ok") + '">' + c.fail_should + ' should failures</span><span class="chip">' + c.review + " items for judgment</span>";
+  h += "</div>";
+  if (S.review) h += '<details><summary>Review notes</summary>' + md(S.review) + "</details>";
+  if (S.sheet) h += '<details><summary>The brand sheet, as written</summary>' + md(S.sheet) + "</details>";
+  return h;
+}
+function secDownloads(){
+  const e = S.exports; if (!e) return "";
+  return '<div class="card" style="display:flex;gap:20px;align-items:center;flex-wrap:wrap"><div style="flex:1;min-width:220px"><b>Everything in one file</b><p style="font-size:14px;color:var(--muted)">' + e.files + " files, each as SVG and as transparent PNG at " + (e.sizes || []).join(", ") + " px.</p></div>" +
+    (e.zip ? '<a class="btn" href="' + src(e.zip) + '" download>Download the zip</a>' : "") + "</div>" +
+    '<p class="note">The PNGs are transparent so they sit on any colour. Use the reversed files on dark backgrounds.</p>';
+}
+function secLegal(){
+  const t = S.legal; if (!t) return "";
+  return '<div class="legal">' + md(t.replace(/^## .*\n/, "")) + "</div>";
+}
+function secDecisions(){
+  const q = (S.questions || []).filter(x => x.status === "answered"), a = B().assumed;
+  if (!q.length && !a) return "";
+  let h = "";
+  if (q.length) h += '<div class="tw"><table><thead><tr><th>Question</th><th>Your answer</th></tr></thead><tbody>' + q.map(x => "<tr><td>" + esc(x.text) + "</td><td><b>" + esc(x.answer) + "</b></td></tr>").join("") + "</tbody></table></div>";
+  if (a) h += '<p class="note">' + inline(a) + "</p>";
+  return h;
+}
+function secHow(){
+  let h = "";
+  const cs = S.concepts || [];
+  if (cs.length) h += '<div class="cards3">' + cs.map(c => conceptCard(c, false)).join("") + "</div>";
+  const sl = B().shortlist || [];
+  if (sl.length) h += '<details><summary>The shortlist the three concepts were chosen from</summary><div class="tw"><table><thead><tr><th>#</th><th>Line</th><th>Kind</th><th>Score</th><th>Chosen</th></tr></thead><tbody>' + sl.map(r => "<tr><td>" + r.n + "</td><td>" + esc(r.line) + "</td><td>" + esc(r.kind) + "</td><td>" + esc(r.score) + "</td><td>" + esc(r.chosen) + "</td></tr>").join("") + "</tbody></table></div></details>";
+  h += '<details><summary>Steps of this run</summary>' + stepsHtml() + "</details>";
+  return h;
+}
+function secFolder(){
+  return '<div class="map">' + (S.folder || []).map(f => '<div><code class="' + (f.exists ? "" : "miss") + '">' + esc(f.path) + '</code><span class="' + (f.exists ? "" : "miss") + '">' + esc(f.what) + (f.exists ? "" : " (not made in this run)") + "</span></div>").join("") + "</div>";
+}
+
+function stepsHtml(){
+  return '<ul class="steps">' + (S.steps || []).map(s => '<li class="' + esc(s.status) + '"><span class="ic">' + (s.status === "done" ? "✓" : "") + "</span><span>" + esc(s.title) + (s.note ? "<small>" + esc(s.note) + "</small>" : "") + "</span></li>").join("") + "</ul>";
+}
+function conceptCard(c, pickable){
+  const rec = S.recommendation && S.recommendation.concept === c.id, isPick = S.picked === c.id;
+  const px = c.renders && c.renders["16"] ? '<span class="px"><img src="' + src(c.renders["16"]) + '" alt="16 px render"><small style="color:var(--muted)">16 px</small></span>' : "";
+  let ft = (rec ? '<span class="tag">Recommended</span>' : "") + (isPick ? '<span class="tag" style="background:#16a34a">Your pick</span>' : "") + px;
+  if (pickable && served && connected) ft += '<button data-pick="' + esc(c.id) + '" style="margin-left:auto">Pick ' + c.id.toUpperCase() + "</button>";
+  return '<div class="cc' + (isPick ? " picked" : "") + '"><div class="im"><img src="' + src(c.svg) + '" alt="Concept ' + c.id.toUpperCase() + '"></div><div class="bd"><b>Concept ' + c.id.toUpperCase() + "</b><p>" + esc(c.line || "") + "</p>" +
+    (rec ? '<p style="color:var(--ink)">' + esc(S.recommendation.reason) + "</p>" : "") + '</div><div class="ft">' + ft + "</div></div>";
+}
+
+/* ---- the question panel and the live pick ---- */
+function openQs(){ return (S.questions || []).filter(q => q.status === "open"); }
+function askHtml(){
+  const qs = openQs(); if (!qs.length) return "";
+  return qs.map(q => {
+    if (q.kind === "pick") return '<div class="ask" id="ask-' + esc(q.id) + '"><span class="tag" style="justify-self:start">Your turn</span><h3>' + esc(q.text) + '</h3><p class="why">Suggested: concept ' + esc(String(q.suggest).toUpperCase()) + ". Pick one below, or ask for changes in the terminal.</p></div>";
+    const opts = (q.options && q.options.length) ? q.options : null;
+    const body = opts ? opts.map((o, i) => '<label><input type="radio" name="q-' + esc(q.id) + '" value="' + esc(o) + '"' + (o === q.suggest ? " checked" : "") + "><span>" + esc(o) + (o === q.suggest ? ' <span class="tag">Suggested</span>' : "") + "</span></label>").join("")
+      : '<input type="text" id="t-' + esc(q.id) + '" value="' + esc(q.suggest) + '" aria-label="Your answer">';
+    return '<form class="ask" data-q="' + esc(q.id) + '"><span class="tag" style="justify-self:start">Your turn</span><h3>' + esc(q.text) + '</h3><p class="why">Suggested: ' + esc(q.suggest) + '. Accept it or change it.</p>' + body + '<div><button type="submit"' + (served ? "" : " disabled") + ">Send answer</button>" + (served ? "" : '<span class="why"> Answer in the terminal: this page is a snapshot.</span>') + "</div></form>";
+  }).join("");
+}
+async function send(id, value){
+  try {
+    const r = await fetch("/api/answer", {method: "POST", headers: {"Content-Type": "application/json", "X-Brd-Token": token || ""}, body: JSON.stringify({id, value})});
+    if (!r.ok) throw new Error((await r.json()).error || r.status);
+    poll();
+  } catch (e) { alert("Could not send the answer: " + e.message); }
+}
+document.addEventListener("submit", e => {
+  const f = e.target.closest("form[data-q]"); if (!f) return; e.preventDefault();
+  const id = f.dataset.q, r = f.querySelector("input[type=radio]:checked"), t = f.querySelector("input[type=text]");
+  send(id, r ? r.value : t ? t.value : "");
+});
+document.addEventListener("click", e => { const b = e.target.closest("button[data-pick]"); if (b) send("pick", b.dataset.pick); });
+
+/* ---- page assembly ---- */
+function build(){
+  const name = S.name || "Untitled brand", fin = done();
+  document.title = (fin ? "Brand design brief: " : "Building: ") + name;
+  $("#crumb").innerHTML = "Brand design brief <span>· " + esc(name) + "</span>";
+  const cur = (S.steps || []).filter(s => s.status === "done").length, tot = (S.steps || []).length;
+  $("#live").innerHTML = fin ? '<span class="dot off"></span>Final brief' : served && connected ? '<span class="dot"></span>Live · ' + cur + " of " + tot + " steps" : '<span class="dot off"></span>Snapshot · ' + cur + " of " + tot + " steps";
+
+  const secs = [
+    ["story", "Story", secStory()], ["positioning", "Positioning", secPositioning()], ["mark", "The mark", secMark()], ["colour", "Colour", secColour()],
+    ["type", "Typography", secType()], ["files", "Logo files", secFiles()], ["rules", "Clear space and misuse", secRules()], ["applications", "Applications", secApplications()],
+    ["quality", "Quality checks", secQuality()], ["downloads", "Downloads", secDownloads()], ["legal", "Legal notes", secLegal()]
+  ].filter(s => s[2]);
+  const apps = [["decisions", "Decisions and assumptions", secDecisions()], ["how", "How we got here", secHow()], ["folder", "What is in this folder", secFolder()]].filter(s => s[2]);
+
+  const facts = [["Scope", B().scope ? "Scope " + B().scope : ""], ["Audience", B().audience ? cap(B().audience.split(",")[0]) : ""], ["Tone", B().tone || ""],
+    ["Typeface", (B()["wordmark-font"] || "").split(/ Version |,| \(/)[0]], ["Review", S.verdict || ""]].filter(f => f[1]);
+  const m = markSrc();
+  let h = '<header class="cover"><div class="eyebrow">Brand analysis · output of the brand-studio plugin · /brand-create</div><div class="coverrow">' +
+    (m ? '<img class="cm" src="' + src(m) + '" alt="">' : "") + '<div><h1>Brand design brief</h1><p class="lede" style="margin-top:10px"><b>' + esc(name) + "</b>" + (fin && S.run && S.run.finished ? " · " + esc(fmtDate(S.run.finished)) : "") + "</p></div></div>" +
+    '<p class="lede">' + (fin ? "A first-draft identity for " + esc(name) + " with the reasoning and the evidence behind it: who it is for, the idea in the mark, the palette and type, the files, and how it holds up in use. It is a strong draft, not a finished identity: review it with a designer before wide use."
+      : "This brief is being written now. Sections appear as each step finishes, and questions for you show up at the top. Leave this tab open.") + "</p>" +
+    (facts.length ? '<dl class="facts">' + facts.map(f => "<div><dt>" + esc(f[0]) + "</dt><dd>" + esc(f[1]) + "</dd></div>").join("") + "</dl>" : "") + "</header>";
+  h += '<div id="askBox">' + askHtml() + "</div>";
+  if (!fin) h += '<section class="sec" id="progress"><header><span class="n">·</span><h2>Progress</h2></header>' + stepsHtml() + "</section>";
+  const pickQ = openQs().some(q => q.kind === "pick");
+  if (!fin && (S.concepts || []).length) h += '<section class="sec" id="concepts"><header><span class="n">·</span><h2>The three concepts</h2></header><div class="cards3">' + S.concepts.map(c => conceptCard(c, pickQ)).join("") + "</div></section>";
+  secs.forEach((s, i) => h += '<section class="sec" id="' + s[0] + '"><header><span class="n">' + String(i + 1).padStart(2, "0") + "</span><h2>" + s[1] + "</h2></header>" + s[2] + "</section>");
+  apps.forEach((s, i) => h += '<section class="sec" id="' + s[0] + '"><header><span class="n">' + "ABC"[i] + "</span><h2>" + s[1] + "</h2></header>" + s[2] + "</section>");
+  h += '<footer class="end">Made with the brand-studio plugin. The mark, the palette and the type are a first draft; nothing here has been cleared for trademark or copyright. See the legal notes' + (secs.some(s => s[0] === "legal") ? "" : " in the brand sheet") + ".</footer>";
+  $("#main").innerHTML = h;
+  frameBuilt = false; mountFrame();
+  $("#toc").innerHTML = "<p>Contents</p>" + secs.map((s, i) => '<a href="#' + s[0] + '"><b>' + String(i + 1).padStart(2, "0") + "</b>" + s[1] + "</a>").join("") + (apps.length ? '<div class="gap"></div>' + apps.map((s, i) => '<a href="#' + s[0] + '"><b>' + "ABC"[i] + "</b>" + s[1] + "</a>").join("") : "");
+  spy();
+}
+function mountFrame(){
+  const box = $("#appFrame"); if (!box || frameBuilt) return; frameBuilt = true;
+  const f = document.createElement("iframe"); f.className = "frame"; f.title = "Applications"; f.loading = "lazy"; f.src = "applications.html?embed" + (ver ? "&v=" + encodeURIComponent(ver) : "");
+  f.addEventListener("load", () => { try { const h = f.contentDocument.documentElement.scrollHeight; if (h > 300) f.style.height = (h + 8) + "px"; } catch (e) {} });
+  box.appendChild(f);
+}
+let io = null;
+function spy(){
+  if (io) io.disconnect();
+  io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ document.querySelectorAll("#toc a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id)); } }), {rootMargin: "-20% 0px -70% 0px"});
+  document.querySelectorAll("section.sec").forEach(s => io.observe(s));
+}
+function sig(o){ const c = Object.assign({}, o); delete c.updated; delete c.token; return JSON.stringify(c); }
+let last = "";
+function apply(next){
+  if (next.token) token = next.token;
+  const s = sig(next); if (s === last) return; last = s;
+  const typing = document.activeElement && document.activeElement.closest && document.activeElement.closest("form.ask");
+  ver = next.updated || ""; S = next;
+  if (typing) return;  // do not rebuild while the user is typing an answer
+  build();
+}
+async function poll(){
+  try {
+    const r = await fetch("/api/state", {cache: "no-store"}); if (!r.ok) throw new Error(r.status);
+    connected = true; fails = 0; apply(await r.json());
+  } catch (e) {
+    if (++fails >= 3 && connected){ connected = false; build(); }
+    else if (fails >= 3 && !connected) clearInterval(timer);  // a static host, not brdlive: stop asking
+  }
+  if (done()) clearInterval(timer);  // the final brief never changes again
+}
+build(); last = sig(S);
+let timer = null;
+if (served && !done()){ timer = setInterval(poll, 1500); poll(); }
+})();
+</script>
+</body>
+</html>

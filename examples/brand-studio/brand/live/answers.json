@@ -1,0 +1,22 @@
+{
+ "audience": {
+  "value": "Developers who build apps but have no brand or design background",
+  "at": "2026-11-27T11:22:00+0000"
+ },
+ "positioning": {
+  "value": "For developers who build apps without a design background, brand-studio is a Claude Code plugin that drafts a full brand identity as checked SVG; unlike asking a model for a logo, every mark is proven against numbered, sourced rules before you see it",
+  "at": "2026-11-27T11:22:07+0000"
+ },
+ "pick": {
+  "value": "c",
+  "at": "2026-11-27T11:22:57+0000"
+ },
+ "own-word": {
+  "value": "checked",
+  "at": "2026-11-27T13:02:48+0000"
+ },
+ "story": {
+  "value": "confirmed (the rewrite, answered in the terminal)",
+  "at": "2026-11-27T13:02:48+0000"
+ }
+}

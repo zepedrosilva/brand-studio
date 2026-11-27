@@ -1,0 +1,44 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the optional tools with the plugin's own script, so no script test skips
+        run: |
+          set -eu
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq shellcheck
+          bash plugin/skills/brand-core/scripts/install-deps.sh --data "$RUNNER_TEMP/deps"
+          echo "BRD_PYTHON=$RUNNER_TEMP/deps/venv/bin/python" >> "$GITHUB_ENV"
+      - name: The tool check passes after the install
+        run: bash plugin/skills/brand-core/scripts/install-deps.sh --check --data "$RUNNER_TEMP/deps"
+      - name: Shellcheck
+        run: shellcheck -S warning scripts/*.sh tests/*.sh plugin/skills/*/tests/*.sh plugin/skills/*/scripts/*.sh
+      - name: Script tests
+        run: for t in plugin/skills/brand-core/tests/*.test.sh tests/*.test.sh; do echo "== $t"; bash "$t"; done
+      - name: Validate the plugin manifest
+        run: |
+          npm install --global --silent @anthropic-ai/claude-code@2.1.332
+          claude plugin validate ./plugin
+
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Repo docs, lessons, hooks and secrets
+        run: sh scripts/check-repo-docs.sh
+      - name: Version raised when plugin/ changed
+        if: github.event_name == 'pull_request'
+        run: sh scripts/check-version.sh "origin/${{ github.base_ref }}"

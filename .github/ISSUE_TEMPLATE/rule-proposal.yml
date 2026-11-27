@@ -1,0 +1,25 @@
+name: Rule proposal
+description: Propose a new brd rule, or a change to a rule's severity, threshold or wording.
+labels: [rule]
+body:
+  - type: textarea
+    id: failure
+    attributes:
+      label: The failure it catches
+      description: A real logo or run where the current rules let a defect through, or flagged something that was fine.
+    validations:
+      required: true
+  - type: textarea
+    id: rule
+    attributes:
+      label: The rule
+      description: Family (CRF, PAL, TYP ...), severity (MUST, SHOULD, MAY), the assertion, how it is detected (script, render or judgment) and the fix.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: A standard, vendor guidance, research or practitioner source with a link, and how strong it is. "My own experience" is fine, labelled as such.
+    validations:
+      required: true

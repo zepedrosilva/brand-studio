@@ -1,0 +1,134 @@
+{
+  "script": "brdcheck",
+  "version": "0.1.0",
+  "thresholds": "references/thresholds.md",
+  "tools": {},
+  "files": [
+    "brand/concepts/c/concept.svg"
+  ],
+  "rules_checked": [
+    "CTR-01",
+    "CTR-02",
+    "CTR-03",
+    "CTR-04",
+    "CTR-05",
+    "CAP-01",
+    "CAP-03",
+    "CRF-03",
+    "CRF-04",
+    "TYP-01",
+    "SEC-01",
+    "PAL-08"
+  ],
+  "brief_rules_checked": [
+    "EVD-02",
+    "POS-01",
+    "POS-02",
+    "POS-05",
+    "PAL-01",
+    "PAL-02",
+    "PAL-03",
+    "PAL-07",
+    "EVD-03",
+    "EVD-04"
+  ],
+  "exports_rules_checked": [],
+  "findings": [
+    {
+      "id": "brd:PAL-08",
+      "severity": "SHOULD",
+      "status": "fail",
+      "file": "brand/concepts/c/concept.svg",
+      "finding": "colour #000000 not in the brief's palette roles (light or dark) or palette line",
+      "fix": "recolour the file to the role values of its own column (light, or dark for reversed files) and keep the brand or text value as the ink, or add the colour to the roles table",
+      "evidence": "script"
+    },
+    {
+      "id": "brd:PAL-01",
+      "severity": "SHOULD",
+      "status": "fail",
+      "file": "brand/brief.md",
+      "finding": "palette roles missing, without two valid #RRGGBB values, or without a ramp entry: brand, neutral, background, text",
+      "fix": "add the rows; derive missing values from the role's ramp; write the ramp as '<name> <light step>/<dark step>'",
+      "evidence": "script"
+    },
+    {
+      "id": "brd:PAL-02",
+      "severity": "SHOULD",
+      "status": "not run",
+      "file": "brand/brief.md",
+      "finding": "the roles table is incomplete (see brd:PAL-01), so the brand hues check was not run",
+      "fix": "complete the roles table",
+      "evidence": "script"
+    },
+    {
+      "id": "brd:PAL-03",
+      "severity": "SHOULD",
+      "status": "not run",
+      "file": "brand/brief.md",
+      "finding": "the roles table is incomplete (see brd:PAL-01), so the ramp order check was not run",
+      "fix": "complete the roles table",
+      "evidence": "script"
+    },
+    {
+      "id": "brd:EVD-02",
+      "severity": "SHOULD",
+      "status": "not run",
+      "file": "brand/brief.md",
+      "finding": "the roles table is incomplete (see brd:PAL-01), so the role contrast check was not run",
+      "fix": "complete the roles table",
+      "evidence": "script"
+    },
+    {
+      "id": "brd:EVD-03",
+      "severity": "SHOULD",
+      "status": "not run",
+      "file": "brand/brief.md",
+      "finding": "the roles table is incomplete (see brd:PAL-01), so the pairs to tell apart check was not run",
+      "fix": "complete the roles table",
+      "evidence": "script"
+    },
+    {
+      "id": "brd:EVD-04",
+      "severity": "SHOULD",
+      "status": "not run",
+      "file": "brand/brief.md",
+      "finding": "the roles table is incomplete (see brd:PAL-01), so the colour-blind distance check was not run",
+      "fix": "complete the roles table",
+      "evidence": "script"
+    },
+    {
+      "id": "brd:PAL-07",
+      "severity": "SHOULD",
+      "status": "not run",
+      "file": "brand/brief.md",
+      "finding": "the roles table is incomplete (see brd:PAL-01), so the category colours check was not run",
+      "fix": "complete the roles table",
+      "evidence": "script"
+    },
+    {
+      "id": "brd:POS-02",
+      "severity": "SHOULD",
+      "status": "fail",
+      "file": "brand/brief.md",
+      "finding": "'## Rationale' has no line for: careful, rigorous, honest, practical, palette, type",
+      "fix": "add one '- <word>: ...' line per tone word, plus '- palette: ...' and '- type: ...'",
+      "evidence": "script"
+    },
+    {
+      "id": "brd:POS-05",
+      "severity": "SHOULD",
+      "status": "fail",
+      "file": "brand/brief.md",
+      "finding": "no '## Story' section with at least one paragraph; the applications page falls back to labelled brief fields",
+      "fix": "draft two to four short paragraphs from the finished brief, set story-status: assumed, and confirm with the user",
+      "evidence": "script"
+    }
+  ],
+  "summary": {
+    "fail_must": 0,
+    "fail_should": 4,
+    "review": 0,
+    "waived": 0
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "skill_name": "brand-review",
+  "note": "Trigger-accuracy prompts, run by hand (docs/testing.md); not run in CI.",
+  "evals": [
+    {
+      "id": "brand-review-1",
+      "prompt": "Check this logo.svg: does it hold up at 16 px and in one colour?",
+      "expect_trigger": true
+    },
+    {
+      "id": "brand-review-2",
+      "prompt": "Review the SVG files in brand/ before I ship the favicon.",
+      "expect_trigger": true
+    },
+    {
+      "id": "brand-review-3",
+      "prompt": "Is this wordmark properly outlined, and is the font licence fine for a logo?",
+      "expect_trigger": true
+    },
+    {
+      "id": "brand-review-no-1",
+      "prompt": "Design a new logo for my podcast from this description.",
+      "expect_trigger": false
+    },
+    {
+      "id": "brand-review-no-2",
+      "prompt": "Review my pull request for the icon component.",
+      "expect_trigger": false
+    },
+    {
+      "id": "brand-review-no-3",
+      "prompt": "Choose a colour palette for my dashboard charts.",
+      "expect_trigger": false
+    }
+  ]
+}

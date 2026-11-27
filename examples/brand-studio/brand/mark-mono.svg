@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <title>brand-studio mark, one colour</title>
+  <g id="frame" fill="#2E2724">
+    <polygon points="16,128 80,64 120,64 56,128 120,192 80,192"/>
+    <polygon points="240,128 176,64 136,64 200,128 136,192 176,192"/>
+  </g>
+  <g id="core" fill="#2E2724">
+    <polygon points="88,128 128,88 168,128 128,168"/>
+  </g>
+</svg>
