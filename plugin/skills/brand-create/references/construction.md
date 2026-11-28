@@ -23,7 +23,7 @@ How to draw one mark as primitives-first SVG. Read by `brand-designer`. Rules ci
 ## Self-check loop
 
 1. `python3 ${CLAUDE_PLUGIN_ROOT}/skills/brand-core/scripts/brdcheck.py <file> --brief brand/brief.md --grid-unit <unit> --out <folder>/check.json`, if the script exists.
-2. `python3 ${CLAUDE_PLUGIN_ROOT}/skills/brand-core/scripts/brdrender.py <file> --out <folder>/renders`, if the script and a renderer exist.
+2. `python3 ${CLAUDE_PLUGIN_ROOT}/skills/brand-core/scripts/brdrender.py <file>`, if the script and a renderer exist. Pass no `--out`: a concept renders into its own `concepts/<x>/renders/`, where the live page looks for it.
 3. Look at the renders: the strip at 16, 32 and 64 px (`brd:CRF-02`, `brd:CAP-02`; the 16 to 64 px strip caught vanishing detail in A10), mono and reversed (`brd:CRF-01`), mirror and rotations (`brd:CRF-05`: no spinner, play button or known mark).
 4. Fix by editing the file; never start over once the idea reads.
 

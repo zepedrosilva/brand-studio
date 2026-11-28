@@ -76,6 +76,12 @@ mkdir -p rootproj/brand && cp "$FIX/good.svg" rootproj/brand/mark.svg
 [ $rc -eq 0 ] && [ -s rootproj/brand/renders/mark-16.png ] && ok || { bad "--root render (exit $rc)"; cat root.out; }
 "$PY" -I "$SCRIPT" "$FIX/good.svg" --root "$FIX/good.svg" >root2.out 2>&1; [ $? -eq 2 ] && grep -q "not a directory" root2.out && ok || bad "--root that is not a directory should exit 2"
 
+# concepts render into their own folder by default, so three files named concept.svg never overwrite each other
+for c in a b; do mkdir -p rootproj/brand/concepts/$c && cp "$FIX/good.svg" rootproj/brand/concepts/$c/concept.svg; done
+"$PY" -I "$SCRIPT" brand/concepts/a/concept.svg --root rootproj >/dev/null 2>&1
+"$PY" -I "$SCRIPT" brand/concepts/b/concept.svg --root rootproj >/dev/null 2>&1
+[ -s rootproj/brand/concepts/a/renders/concept-16.png ] && [ -s rootproj/brand/concepts/b/renders/concept-16.png ] && [ ! -e rootproj/brand/renders/concept-16.png ] && ok || bad "concept renders must land in brand/concepts/<x>/renders"
+
 # pre-check blocks rendering: live text and external reference
 rm -rf brand
 for bad_svg in live-text external; do
