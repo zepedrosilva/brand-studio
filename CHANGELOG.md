@@ -9,6 +9,7 @@ All notable changes to this project are listed here. The format follows [Keep a 
 ### Added
 
 - When you answer on the live page, the button shows "Sending…", then the answer appears in a green "✓ Recorded" list at the top, saying whether you kept the suggestion or changed it. The list comes from what the server stored, so it confirms the answer was recorded. A failed send shows an inline message instead of a browser alert.
+- While the run works, the live page says on what: after you answer, a card with a spinner reads "Working on: <step>" where the question was, and the top bar and tab title name the same step, so it is clear the plugin has moved on and nothing is needed from you.
 - When a question is waiting, the live page says so: the tab title reads "● Your turn", the tab icon gets a dot, and the page scrolls to the question once. Before, only the link in the terminal pointed you there.
 
 ### Fixed

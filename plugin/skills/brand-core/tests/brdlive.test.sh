@@ -146,13 +146,17 @@ setTimeout(() => {
   const ok = (main.match(/data-pick="/g) || []).length === 3 && live.includes("Live") && ctx.document.title.startsWith("\u25CF Your turn");
   if (!ok) console.log("FAIL pick buttons after the first poll: " + (main.match(/data-pick="/g) || []).length + " buttons; status " + live.replace(/<[^>]+>/g, "") + "; title " + ctx.document.title);
   if (!ok) process.exit(1);
-  // the user picks b: the next poll shows it as recorded, not the buttons
+  // the user picks b (the server marks the pick step done) and the run starts the kit:
+  // the next poll shows the answer as recorded, no buttons, and what the run is working on
   const q = state.questions.find(q => q.id === "pick"); q.status = "answered"; q.answer = "b"; state.picked = "b";
+  state.steps.forEach(s => { if (s.id === "pick") s.status = "done"; if (s.id === "kit") s.status = "active"; });
   ctx.tick();
   setTimeout(() => {
     const m2 = el("#main").innerHTML;
-    const ok2 = m2.includes("Recorded") && m2.includes("concept B") && m2.includes("your change") && !m2.includes('data-pick="');
-    if (!ok2) console.log("FAIL a recorded answer must show as Recorded, with no Pick buttons left");
+    const kit = state.steps.find(s => s.id === "kit").title;
+    const ok2 = m2.includes("Recorded") && m2.includes("concept B") && m2.includes("your change") && !m2.includes('data-pick="') &&
+      m2.includes("Working on: " + kit) && el("#live").innerHTML.includes("Working on: " + kit) && ctx.document.title.startsWith("Working on: " + kit);
+    if (!ok2) console.log("FAIL after the answer: Recorded, no Pick buttons, and 'Working on: " + kit + "' in the card, top bar and title");
     process.exit(ok2 ? 0 : 1);
   }, 50);
 }, 50);
