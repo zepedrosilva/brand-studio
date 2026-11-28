@@ -22,6 +22,42 @@ It makes a strong first draft for developers and small teams. It does not replac
 
 Then run `/brand-studio:brand-create` with your project's story, a README or a pitch.
 
+## Examples
+
+**Make an identity from your project's story.** Pass a few paragraphs, or point at a file:
+
+```
+/brand-studio:brand-create Tidepool is a small app for wild swimmers. It shows
+tide times, water temperature and who else is swimming nearby. It should feel
+calm and outdoorsy, not sporty.
+```
+
+```
+/brand-studio:brand-create README.md
+```
+
+It prints the brand folder's path, opens a live page at `127.0.0.1`, and asks once for anything the story doesn't say, each question with a suggested answer. Three concepts come back side by side with a recommendation. You pick one, and the kit is built from it.
+
+**Ask in plain words.** The skill also triggers on requests like these:
+
+```
+Make a logo for this project.
+I need a favicon and an app icon for my side project.
+Make an icon set for the app.
+```
+
+The default scope is B: a mark, wordmark, lockups, palette and brand sheet. Ask for the options to choose A (mark only) or C (adds dark variants, an icon set and social assets). An icon set on its own runs after a short brief.
+
+**Review a logo you already have:**
+
+```
+/brand-studio:brand-review assets/logo.svg
+/brand-studio:brand-review brand/
+/brand-studio:brand-review logo.png
+```
+
+An SVG gets the full review. A PNG or JPG gets a lower-confidence review by eye only. Either way you get a verdict with `brd:` rule IDs, the evidence level of each finding and a legal warning block.
+
 ## Requirements
 
 Only Claude Code is required. The tools below are optional. At the start of a run the plugin checks for them, lists what is missing and asks whether to install it. Say yes and it runs [`install-deps.sh`](plugin/skills/brand-core/scripts/install-deps.sh), which prints every command before it runs. Say no and the run carries on: the rules still apply, but they are judged by reading the SVG and not proven by a script or a render.
