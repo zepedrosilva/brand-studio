@@ -158,6 +158,7 @@ The live page of a `/brand-create` run: one browser tab shows the run as it happ
 ```
 python3 brdlive.py [--root DIR] start [--port 8765] [--no-open]
 python3 brdlive.py [--root DIR] step <id> pending|active|done|skipped [--note TEXT]
+python3 brdlive.py [--root DIR] say <text>
 python3 brdlive.py [--root DIR] ask <id> --text T --suggest S [--option V ...] [--kind choice|text|pick]
 python3 brdlive.py [--root DIR] wait <id> [--timeout 540]
 python3 brdlive.py [--root DIR] answer <id> <value>
@@ -166,8 +167,9 @@ python3 brdlive.py [--root DIR] refresh | finish | stop | status
 ```
 
 - **start:** creates `brand/live/`, writes the page, serves `brand/` on `127.0.0.1` (first free port from 8765), prints the URL, opens the browser unless `--no-open`, and runs until `stop`. Run it in the background. A second `start` while one is alive prints the URL and exits 0.
-- **Steps:** `brief`, `shortlist`, `concepts`, `review`, `pick`, `kit`, `story`, `export`, `final`. Every command that changes state rebuilds `state.json` and `index.html` from the live state plus a scan of the folder (brief, concepts, SVG files, exports, checks, `review.md`, `brand-sheet.md`, `applications.html`), so the page shows whatever files exist.
-- **Questions:** `ask` puts a question on the page with a suggested answer; `--option` makes it a choice and `--kind pick` (id `pick`) shows the concept cards with a Pick button. The user answers in the page (a `POST /api/answer`) or with `answer`; `wait` blocks until the answer is in `answers.json` and prints `{"id":..,"answer":..}`. Exit 3 on timeout; the question stays open.
+- **Steps:** `brief`, `shortlist`, `concepts`, `review`, `pick`, `kit`, `story`, `export`, `final`. Every command that changes state rebuilds `state.json` and `index.html` from the live state plus a scan of the folder (brief, concepts, SVG files, exports, checks, `review.md`, `brand-sheet.md`, `applications.html`), so the page shows whatever files exist. `start` on a new run marks `brief` in progress. Marking a step `done` or `skipped` (or answering `pick`) starts the next pending step when no other step is in progress, so the page never sits idle between steps.
+- **say:** posts a progress message (up to 400 characters) on the step in progress, the latest one started; the page shows it under "Working on". It first starts the next pending step if none is in progress, and exits 2 when no step is left.
+- **Questions:** `ask` puts a question on the page with a suggested answer; `--option` makes it a choice and `--kind pick` (id `pick`) shows the concept cards with a Pick button. After `ask ok` it prints the same question, its suggestion and options, as a line to repeat in the terminal, so the user can answer in either place. The user answers in the page (a `POST /api/answer`) or with `answer`; `wait` blocks until the answer is in `answers.json` and prints `{"id":..,"answer":..}`. Exit 3 on timeout; the question stays open.
 - **finish:** marks the run done; the page becomes the report (title "Brand design brief", the plugin named in the eyebrow, progress moved to an appendix).
 - **Safety:** the server binds `127.0.0.1` only, serves only files under `brand/` (no directory listing; `live/server.json` and lock or temp files return 404), and accepts `POST /api/answer` only with the per-run token from `/api/state` in the `X-Brd-Token` header and, when an `Origin` header is sent, only from the page's own origin. Bodies over 20 000 bytes are refused. Every value shown on the page is HTML-escaped.
 - **Concurrency:** state changes are written atomically under a lock file (`fcntl`, so macOS and Linux only).

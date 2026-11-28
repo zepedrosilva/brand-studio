@@ -39,10 +39,16 @@ has state-written brand/live/state.json '"steps"'
 run step 0 "step ok" step brief "done" --note "assumed two fields"
 has step-recorded brand/live/state.json "assumed two fields"
 run step-bad-id 2 "unknown step" step nope "done"
+# a finished step starts the next pending one, and say puts the terminal's message on it
+python3 -I - brand/live/state.json shortlist active <<'PY2' && pass=$((pass+1)) || { fail=$((fail+1)); echo "FAIL step-done-advances: shortlist not active"; }
+import json, sys; st = json.load(open(sys.argv[1])); sys.exit(0 if any(x["id"] == sys.argv[2] and x["status"] == sys.argv[3] for x in st["steps"]) else 1)
+PY2
+run say 0 "say ok" say "Three designers are drawing greyscale concepts"
+has say-recorded brand/live/state.json "Three designers are drawing"
 run step-bad-status 2 "" step brief weird
 
 # questions and answers
-run ask 0 "ask ok" ask q1 --text "Which name?" --suggest "Pantry Clock"
+run ask 0 "Ask in the terminal too: Which name? Suggested: Pantry Clock" ask q1 --text "Which name?" --suggest "Pantry Clock"
 has question-open brand/live/state.json '"status": "open"'
 run ask-twice 2 "already exists" ask q1 --text x --suggest y
 run wait-timeout 3 "no answer" wait q1 --timeout 1
@@ -54,8 +60,12 @@ run answer-unknown 2 "no question" answer zzz x
 # the concept pick
 run ask-pick 0 "ask ok" ask pick --kind pick --text "Which concept?" --suggest a --option a --option b --option c
 run pick-bad 2 "must be one of" answer pick z
+for s in shortlist concepts review; do python3 -I "$SCRIPT" step "$s" "done" >/dev/null; done
 run pick 0 "answered" answer pick B
 has picked-lower brand/live/state.json '"picked": "b"'
+python3 -I - brand/live/state.json kit active <<'PY2' && pass=$((pass+1)) || { fail=$((fail+1)); echo "FAIL pick-advances: kit not active after the pick"; }
+import json, sys; st = json.load(open(sys.argv[1])); sys.exit(0 if any(x["id"] == sys.argv[2] and x["status"] == sys.argv[3] for x in st["steps"]) else 1)
+PY2
 run recommend 0 "recommend ok" recommend A "The only one that names both halves"
 has recommend-kept brand/live/state.json "names both halves"
 
@@ -76,6 +86,18 @@ has final-no-poll brand/index.html 'if (served && !done())'
 has static-host-stops brand/index.html 'fails >= 3 && !connected) clearInterval(timer)'
 cd "$WORK" || exit 1
 run root 0 "status\|url" --root proj status
+# say with every step finished has nowhere to go
+mkdir -p doneproj/brand && cp "$FIX/brief-roles-good.md" doneproj/brand/brief.md
+for s in brief shortlist concepts review pick kit story export final; do python3 -I "$SCRIPT" --root doneproj step "$s" "done" >/dev/null; done
+run say-no-step 2 "no step in progress" --root doneproj say "late"
+# start on a new run shows the brief in progress from the first second
+mkdir -p startproj/brand && cp "$FIX/brief-roles-good.md" startproj/brand/brief.md
+python3 -I "$SCRIPT" --root startproj start --no-open >/dev/null 2>&1 &
+for _ in $(seq 50); do [ -f startproj/brand/live/server.json ] && break; sleep 0.1; done
+python3 -I "$SCRIPT" --root startproj stop >/dev/null 2>&1; wait
+python3 -I - startproj/brand/live/state.json brief active <<'PY2' && pass=$((pass+1)) || { fail=$((fail+1)); echo "FAIL start-brief-active"; }
+import json, sys; st = json.load(open(sys.argv[1])); sys.exit(0 if any(x["id"] == sys.argv[2] and x["status"] == sys.argv[3] for x in st["steps"]) else 1)
+PY2
 run root-missing 2 "not a directory" --root "$WORK/nope" status
 
 # the server, in process: token, origin, hidden files, traversal
@@ -149,13 +171,13 @@ setTimeout(() => {
   // the user picks b (the server marks the pick step done) and the run starts the kit:
   // the next poll shows the answer as recorded, no buttons, and what the run is working on
   const q = state.questions.find(q => q.id === "pick"); q.status = "answered"; q.answer = "b"; state.picked = "b";
-  state.steps.forEach(s => { if (s.id === "pick") s.status = "done"; if (s.id === "kit") s.status = "active"; });
+  state.steps.forEach(s => { if (s.id === "pick") s.status = "done"; if (s.id === "kit") { s.status = "active"; s.note = "Drawing the palette from the pick"; } });
   ctx.tick();
   setTimeout(() => {
     const m2 = el("#main").innerHTML;
     const kit = state.steps.find(s => s.id === "kit").title;
     const ok2 = m2.includes("Recorded") && m2.includes("concept B") && m2.includes("your change") && !m2.includes('data-pick="') &&
-      m2.includes("Working on: " + kit) && el("#live").innerHTML.includes("Working on: " + kit) && ctx.document.title.startsWith("Working on: " + kit);
+      m2.includes("Working on: " + kit) && m2.includes("Drawing the palette from the pick") && m2.includes(">LIVE<") && el("#live").innerHTML.includes("Working on: " + kit) && ctx.document.title.startsWith("Working on: " + kit);
     if (!ok2) console.log("FAIL after the answer: Recorded, no Pick buttons, and 'Working on: " + kit + "' in the card, top bar and title");
     process.exit(ok2 ? 0 : 1);
   }, 50);

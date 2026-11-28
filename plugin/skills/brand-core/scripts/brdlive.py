@@ -226,6 +226,26 @@ def set_step(st, sid, status, note=""):
     s["status"] = status
     if note:
         s["note"] = note
+    if status in ("done", "skipped"):
+        advance(st)
+
+
+def advance(st):
+    """With no step in progress, start the next pending one, so the page never sits idle between steps."""
+    if any(x["status"] == "active" for x in st["steps"]):
+        return
+    nxt = next((x for x in st["steps"] if x["status"] == "pending"), None)
+    if nxt and st.get("run", {}).get("status") != "done":
+        nxt["status"] = "active"
+
+
+def say(st, text):
+    """Post a progress message on the step in progress (the latest one started), so the page tells what the terminal tells."""
+    advance(st)
+    act = [x for x in st["steps"] if x["status"] == "active"]
+    if not act:
+        raise Fail("no step in progress to say this on; start one with: step <id> active")
+    act[-1]["note"] = str(text)[:400]
 
 
 def record_answer(root, qid, value):
@@ -332,7 +352,9 @@ def serve(root, port, open_browser):
         return 0
     with Lock(live):
         if not os.path.isfile(state_path(root)):
-            atomic(state_path(root), json.dumps(base_state(), indent=1))
+            st = base_state()
+            st["steps"][0]["status"] = "active"  # the page shows work from the first second
+            atomic(state_path(root), json.dumps(st, indent=1))
         refresh(root)
     token = secrets.token_urlsafe(24)
     srv = None
@@ -390,6 +412,8 @@ def main(argv=None):
     s.add_argument("--no-open", action="store_true")
     s = sub.add_parser("step", help="set a step's status")
     s.add_argument("id"); s.add_argument("status", choices=STATUSES); s.add_argument("--note", default="")
+    s = sub.add_parser("say", help="post a progress message on the step in progress (say on the page what you tell the user)")
+    s.add_argument("text")
     s = sub.add_parser("ask", help="put a question on the page")
     s.add_argument("id"); s.add_argument("--text", required=True); s.add_argument("--suggest", required=True, help="the suggested answer")
     s.add_argument("--option", action="append", default=[], help="a fixed choice; repeat for more")
@@ -438,6 +462,8 @@ def main(argv=None):
         def apply(st):
             if a.cmd == "step":
                 set_step(st, a.id, a.status, a.note)
+            elif a.cmd == "say":
+                say(st, a.text)
             elif a.cmd == "ask":
                 kind = a.kind or ("choice" if a.option else "text")
                 if any(q["id"] == a.id for q in st["questions"]):
@@ -458,6 +484,9 @@ def main(argv=None):
                         x["status"] = "done"
         mutate(root, apply)
         print("brdlive: %s ok" % a.cmd)
+        if a.cmd == "ask":  # the same question for the terminal: ask in both places, answer in either
+            print("Ask in the terminal too: %s Suggested: %s.%s Answer here or on the page." %
+                  (a.text, a.suggest, (" Options: " + ", ".join(a.option) + ".") if a.option else ""))
         return 0
     except (Fail, brdcheck.InputError) as ex:
         print("brdlive: %s" % ex, file=sys.stderr)
