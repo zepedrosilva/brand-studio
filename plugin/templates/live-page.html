@@ -88,6 +88,8 @@ button.ghost,.btn.ghost{background:#fff;color:var(--ink);border-color:var(--line
 button:disabled{opacity:.45;cursor:not-allowed}
 button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #2563eb;outline-offset:2px}
 .ask{border:1.5px solid var(--ink);border-radius:14px;padding:18px 20px;display:grid;gap:12px;background:#fff;margin:0 0 28px}
+.answered{display:grid;gap:6px;margin:0 0 28px}.answered p{margin:0;padding:10px 14px;border-radius:10px;background:var(--ok-bg);color:var(--ok)}.answered small{color:var(--muted);margin-left:6px}
+.err{margin:0 0 12px;padding:10px 14px;border-radius:10px;background:var(--bad-bg);color:var(--bad)}
 .ask h3{margin:0}.ask .why{font-size:13.5px;color:var(--muted)}
 .ask label{display:flex;gap:10px;align-items:flex-start;font-size:15px;cursor:pointer}.ask input[type=text]{font:400 15px var(--sans);padding:10px 12px;border:1px solid #c7cbd1;border-radius:8px;width:100%}
 .tag{font:600 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:#fff;border-radius:99px;padding:2px 9px}
@@ -307,9 +309,18 @@ function conceptCard(c, pickable){
 
 /* ---- the question panel and the live pick ---- */
 function openQs(){ return (S.questions || []).filter(q => q.status === "open"); }
+function short(s, n){ s = String(s || ""); return s.length > n ? s.slice(0, n - 1) + "\u2026" : s; }
+function answeredHtml(){
+  const qs = (S.questions || []).filter(q => q.status === "answered"); if (!qs.length) return "";
+  return '<div class="answered" aria-live="polite">' + qs.map(q => {
+    const v = q.kind === "pick" ? "concept " + String(q.answer).toUpperCase() : String(q.answer);
+    const same = String(q.answer).trim().toLowerCase() === String(q.suggest).trim().toLowerCase();
+    return "<p>\u2713 Recorded: " + esc(short(q.text, 70)) + " \u2192 <b>" + esc(short(v, 120)) + "</b><small>" + (same ? "the suggestion" : "your change") + "</small></p>";
+  }).join("") + "</div>";
+}
 function askHtml(){
-  const qs = openQs(); if (!qs.length) return "";
-  return qs.map(q => {
+  const qs = openQs(); if (!qs.length) return answeredHtml();
+  return answeredHtml() + qs.map(q => {
     if (q.kind === "pick") return '<div class="ask" id="ask-' + esc(q.id) + '"><span class="tag" style="justify-self:start">Your turn</span><h3>' + esc(q.text) + '</h3><p class="why">Suggested: concept ' + esc(String(q.suggest).toUpperCase()) + ". Pick one below, or ask for changes in the terminal.</p></div>";
     const opts = (q.options && q.options.length) ? q.options : null;
     const body = opts ? opts.map((o, i) => '<label><input type="radio" name="q-' + esc(q.id) + '" value="' + esc(o) + '"' + (o === q.suggest ? " checked" : "") + "><span>" + esc(o) + (o === q.suggest ? ' <span class="tag">Suggested</span>' : "") + "</span></label>").join("")
@@ -317,19 +328,25 @@ function askHtml(){
     return '<form class="ask" data-q="' + esc(q.id) + '"><span class="tag" style="justify-self:start">Your turn</span><h3>' + esc(q.text) + '</h3><p class="why">Suggested: ' + esc(q.suggest) + '. Accept it or change it.</p>' + body + '<div><button type="submit"' + (served ? "" : " disabled") + ">Send answer</button>" + (served ? "" : '<span class="why"> Answer in the terminal: this page is a snapshot.</span>') + "</div></form>";
   }).join("");
 }
-async function send(id, value){
+async function send(id, value, btn){
+  const label = btn ? btn.textContent : "";
+  if (btn){ btn.disabled = true; btn.textContent = "Sending\u2026"; }
   try {
     const r = await fetch("/api/answer", {method: "POST", headers: {"Content-Type": "application/json", "X-Brd-Token": token || ""}, body: JSON.stringify({id, value})});
     if (!r.ok) throw new Error((await r.json()).error || r.status);
-    poll();
-  } catch (e) { alert("Could not send the answer: " + e.message); }
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();  // focus in the form would block the redraw that shows "Recorded"
+    await poll();
+  } catch (e) {
+    if (btn){ btn.disabled = false; btn.textContent = label; }
+    const box = $("#askBox"); if (box) box.insertAdjacentHTML("afterbegin", '<p class="err" role="alert">Could not send the answer: ' + esc(e.message) + ". Try again, or answer in the terminal.</p>");
+  }
 }
 document.addEventListener("submit", e => {
   const f = e.target.closest("form[data-q]"); if (!f) return; e.preventDefault();
   const id = f.dataset.q, r = f.querySelector("input[type=radio]:checked"), t = f.querySelector("input[type=text]");
-  send(id, r ? r.value : t ? t.value : "");
+  send(id, r ? r.value : t ? t.value : "", f.querySelector("button[type=submit]"));
 });
-document.addEventListener("click", e => { const b = e.target.closest("button[data-pick]"); if (b) send("pick", b.dataset.pick); });
+document.addEventListener("click", e => { const b = e.target.closest("button[data-pick]"); if (b) send("pick", b.dataset.pick, b); });
 
 /* ---- page assembly ---- */
 function build(){

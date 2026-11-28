@@ -138,14 +138,23 @@ const ctx = {
   document: { querySelector: s => s === "#appFrame" ? null : el(s), querySelectorAll: () => [], addEventListener() {}, activeElement: null, title: "" },
   IntersectionObserver: class { observe() {} disconnect() {} },
   fetch: async () => ({ ok: true, json: async () => Object.assign({}, state, { updated: "later", token: "t" }) }),
-  setInterval: () => 1, clearInterval() {}, encodeURIComponent,
+  setInterval: fn => { ctx.tick = fn; return 1; }, clearInterval() {}, encodeURIComponent,
 };
 vm.createContext(ctx); vm.runInContext(code, ctx);
 setTimeout(() => {
   const main = el("#main").innerHTML, live = el("#live").innerHTML;
   const ok = (main.match(/data-pick="/g) || []).length === 3 && live.includes("Live") && ctx.document.title.startsWith("\u25CF Your turn");
   if (!ok) console.log("FAIL pick buttons after the first poll: " + (main.match(/data-pick="/g) || []).length + " buttons; status " + live.replace(/<[^>]+>/g, "") + "; title " + ctx.document.title);
-  process.exit(ok ? 0 : 1);
+  if (!ok) process.exit(1);
+  // the user picks b: the next poll shows it as recorded, not the buttons
+  const q = state.questions.find(q => q.id === "pick"); q.status = "answered"; q.answer = "b"; state.picked = "b";
+  ctx.tick();
+  setTimeout(() => {
+    const m2 = el("#main").innerHTML;
+    const ok2 = m2.includes("Recorded") && m2.includes("concept B") && m2.includes("your change") && !m2.includes('data-pick="');
+    if (!ok2) console.log("FAIL a recorded answer must show as Recorded, with no Pick buttons left");
+    process.exit(ok2 ? 0 : 1);
+  }, 50);
 }, 50);
 JS
   if [ $? -eq 0 ]; then pass=$((pass+1)); else fail=$((fail+1)); fi
