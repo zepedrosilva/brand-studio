@@ -158,11 +158,19 @@ def export(renderer, svg, stem, sizes, out_abs, out_rel):
     return 0
 
 
+def concept_renders(svg):
+    """brand/concepts/<x>/renders for a file inside a concept folder: every concept is named concept.svg, so a shared default folder would let one concept's renders overwrite another's."""
+    rel = os.path.relpath(os.path.realpath(svg), os.path.realpath("brand")).split(os.sep)
+    if len(rel) >= 3 and rel[0] == "concepts" and ".." not in rel:
+        return os.path.join("brand", "concepts", rel[1], "renders")
+    return None
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Render PNGs for the brd render rules.")
     ap.add_argument("svg")
     ap.add_argument("--sizes", default=None, help="comma-separated; default test_sizes_px from thresholds.md")
-    ap.add_argument("--out", default=None, help="default brand/renders, or brand/exports with --export")
+    ap.add_argument("--out", default=None, help="default brand/renders (brand/concepts/<x>/renders for a concept), or brand/exports with --export")
     ap.add_argument("--export", action="store_true", help="write the downloadable set: SVG copy and transparent PNGs at export_sizes_px, plus a manifest (brd:CTR-06)")
     ap.add_argument("--renderer", choices=["resvg", "rsvg-convert"])
     ap.add_argument("--root", help="chdir here first; brand/ is resolved against it")
@@ -174,7 +182,7 @@ def main(argv=None):
             os.chdir(a.root)
         if not os.path.isfile(a.svg):
             raise Fail(2, "no such file: " + a.svg)
-        a.out = a.out or ("brand/exports" if a.export else "brand/renders")
+        a.out = a.out or ("brand/exports" if a.export else concept_renders(a.svg) or "brand/renders")
         out_abs, base = os.path.realpath(a.out), os.path.realpath("brand")
         if not (out_abs == base or out_abs.startswith(base + os.sep)):
             raise Fail(2, "--out must be inside the brand folder (brand/)")

@@ -24,7 +24,7 @@ Plugin root: `${CLAUDE_PLUGIN_ROOT}`; data folder for the tool check: `${CLAUDE_
 
 1. Inventory the files you were given. In concept mode read only the files named in the prompt: never `notes.md`, the brief or other folders in `brand/`. Pass `--root` to the scripts when the caller gives a project root.
 2. Run `brdcheck.py` once over all of them (with `--brief` and `--icons` when present, and `--exports brand/exports` at a final review of a brand folder); note `not run` if it is missing.
-3. Run `brdrender.py` per master; Read every PNG it writes and judge the render rules.
+3. Run `brdrender.py` per master; Read every PNG it writes and judge the render rules. For concepts pass no `--out`: each renders into its own `concepts/<x>/renders/`, so the three files named `concept.svg` never overwrite each other. Read each concept's renders from its own folder.
 4. For concepts, run the name test (`brd:CNC-03`) now, from the renders alone and before you read the brief, its name or its concept line (the caller must not pass them): for each mark, list your three most likely guesses for what it is, then say whether they point to the name or the narrative's world (yes, partly, no). Be blunt.
 5. Apply the lettering step (`brd:TYP-01`) and the judgment rules; resolve every script `review` item in one line.
 6. For several concepts, give one verdict per concept and a one-line comparison of how each fares at 16 px and in one colour; do not recommend one (the main session does).

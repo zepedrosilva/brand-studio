@@ -4,6 +4,20 @@ All notable changes to this project are listed here. The format follows [Keep a 
 
 ## [Unreleased]
 
+## [0.5.3] - 2026-11-28
+
+### Added
+
+- When you answer on the live page, the button shows "Sending…", then the answer appears in a green "✓ Recorded" list at the top, saying whether you kept the suggestion or changed it. The list comes from what the server stored, so it confirms the answer was recorded. A failed send shows an inline message instead of a browser alert.
+- While the run works, the live page says on what: after you answer, a card with a spinner reads "Working on: <step>" where the question was, and the top bar and tab title name the same step, so it is clear the plugin has moved on and nothing is needed from you.
+- When a question is waiting, the live page says so: the tab title reads "● Your turn", the tab icon gets a dot, and the page scrolls to the question once. Before, only the link in the terminal pointed you there.
+
+### Fixed
+
+- `brdrender.py` renders a file inside `brand/concepts/<x>/` into that concept's own `renders/` folder by default. All three concept files are named `concept.svg`, so renders that fell back to the shared `brand/renders/` overwrote each other, the name test and render rules could judge one concept's images as another's, and the live page, which reads each concept's own folder, showed no renders. The designer and reviewer instructions no longer pass `--out` for concepts ([#1](https://github.com/zepedrosilva/brand-studio/issues/1)).
+- The live page shows the Pick A/B/C buttons. They need a live connection, but the first successful poll only redrew the page when the state had changed, so the page stayed in snapshot mode and the buttons never appeared.
+- The own-word question on the live page explains the term, with an example, before the suggested answer ([#2](https://github.com/zepedrosilva/brand-studio/issues/2)).
+
 ## [0.5.2] - 2026-11-27
 
 ### Fixed
