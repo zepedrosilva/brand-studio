@@ -6,6 +6,10 @@ All notable changes to this project are listed here. The format follows [Keep a 
 
 ## [0.5.3] - 2026-11-28
 
+### Added
+
+- When a question is waiting, the live page says so: the tab title reads "● Your turn", the tab icon gets a dot, and the page scrolls to the question once. Before, only the link in the terminal pointed you there.
+
 ### Fixed
 
 - `brdrender.py` renders a file inside `brand/concepts/<x>/` into that concept's own `renders/` folder by default. All three concept files are named `concept.svg`, so renders that fell back to the shared `brand/renders/` overwrote each other, the name test and render rules could judge one concept's images as another's, and the live page, which reads each concept's own folder, showed no renders. The designer and reviewer instructions no longer pass `--out` for concepts ([#1](https://github.com/zepedrosilva/brand-studio/issues/1)).

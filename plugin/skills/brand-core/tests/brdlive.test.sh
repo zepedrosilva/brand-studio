@@ -122,7 +122,7 @@ rc=$?
 if [ "$rc" -eq 0 ]; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL server checks (see lines above)"; fi
 
 # The page's own script, run under node with a stub DOM: with a pick question open and three concepts,
-# the first successful poll must show the Pick buttons even though the state has not changed.
+# the first successful poll must show the Pick buttons even though the state has not changed, and the tab title says it is the user's turn.
 if command -v node >/dev/null 2>&1; then
   mkdir -p pickproj/brand && cp "$FIX/brief-roles-good.md" pickproj/brand/brief.md
   for c in a b c; do mkdir -p pickproj/brand/concepts/$c && cp "$FIX/good.svg" pickproj/brand/concepts/$c/concept.svg; done
@@ -143,8 +143,8 @@ const ctx = {
 vm.createContext(ctx); vm.runInContext(code, ctx);
 setTimeout(() => {
   const main = el("#main").innerHTML, live = el("#live").innerHTML;
-  const ok = (main.match(/data-pick="/g) || []).length === 3 && live.includes("Live");
-  if (!ok) console.log("FAIL pick buttons after the first poll: " + (main.match(/data-pick="/g) || []).length + " buttons; status " + live.replace(/<[^>]+>/g, ""));
+  const ok = (main.match(/data-pick="/g) || []).length === 3 && live.includes("Live") && ctx.document.title.startsWith("\u25CF Your turn");
+  if (!ok) console.log("FAIL pick buttons after the first poll: " + (main.match(/data-pick="/g) || []).length + " buttons; status " + live.replace(/<[^>]+>/g, "") + "; title " + ctx.document.title);
   process.exit(ok ? 0 : 1);
 }, 50);
 JS

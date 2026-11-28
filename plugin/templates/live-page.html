@@ -334,7 +334,6 @@ document.addEventListener("click", e => { const b = e.target.closest("button[dat
 /* ---- page assembly ---- */
 function build(){
   const name = S.name || "Untitled brand", fin = done();
-  document.title = (fin ? "Brand design brief: " : "Building: ") + name;
   $("#crumb").innerHTML = "Brand design brief <span>· " + esc(name) + "</span>";
   const cur = (S.steps || []).filter(s => s.status === "done").length, tot = (S.steps || []).length;
   $("#live").innerHTML = fin ? '<span class="dot off"></span>Final brief' : served && connected ? '<span class="dot"></span>Live · ' + cur + " of " + tot + " steps" : '<span class="dot off"></span>Snapshot · ' + cur + " of " + tot + " steps";
@@ -362,9 +361,22 @@ function build(){
   apps.forEach((s, i) => h += '<section class="sec" id="' + s[0] + '"><header><span class="n">' + "ABC"[i] + "</span><h2>" + s[1] + "</h2></header>" + s[2] + "</section>");
   h += '<footer class="end">Made with the brand-studio plugin. The mark, the palette and the type are a first draft; nothing here has been cleared for trademark or copyright. See the legal notes' + (secs.some(s => s[0] === "legal") ? "" : " in the brand sheet") + ".</footer>";
   $("#main").innerHTML = h;
+  turn(name, fin);
   frameBuilt = false; mountFrame();
   $("#toc").innerHTML = "<p>Contents</p>" + secs.map((s, i) => '<a href="#' + s[0] + '"><b>' + String(i + 1).padStart(2, "0") + "</b>" + s[1] + "</a>").join("") + (apps.length ? '<div class="gap"></div>' + apps.map((s, i) => '<a href="#' + s[0] + '"><b>' + "ABC"[i] + "</b>" + s[1] + "</a>").join("") : "");
   spy();
+}
+// When a question opens: say so in the tab title, put a dot on the tab icon, and scroll to the question once.
+const DOT = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#e5484d"/></svg>');
+const seenQs = new Set();
+function turn(name, fin){
+  const open = fin ? [] : openQs();
+  document.title = (open.length ? "\u25CF Your turn \u00B7 " : fin ? "Brand design brief: " : "Building: ") + name;
+  let icon = document.querySelector('link[rel="icon"]');
+  if (open.length && !icon){ icon = document.createElement("link"); icon.rel = "icon"; document.head.appendChild(icon); }
+  if (icon){ if (open.length) icon.href = DOT; else icon.remove(); }
+  const fresh = open.some(q => !seenQs.has(q.id)); open.forEach(q => seenQs.add(q.id));
+  const box = $("#askBox"); if (fresh && box && box.scrollIntoView) box.scrollIntoView({behavior: "smooth", block: "start"});
 }
 function mountFrame(){
   const box = $("#appFrame"); if (!box || frameBuilt) return; frameBuilt = true;
