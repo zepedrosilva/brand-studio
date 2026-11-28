@@ -4,6 +4,13 @@ All notable changes to this project are listed here. The format follows [Keep a 
 
 ## [Unreleased]
 
+## [0.5.3] - 2026-11-28
+
+### Fixed
+
+- The reviewer renders each concept into its own folder (`concepts/<x>/renders/`). All three concept files are named `concept.svg`, so their renders overwrote each other in `brand/renders/`, and the name test and render rules could judge one concept's images as another's ([#1](https://github.com/zepedrosilva/brand-studio/issues/1)).
+- The own-word question on the live page explains the term, with an example, before the suggested answer ([#2](https://github.com/zepedrosilva/brand-studio/issues/2)).
+
 ## [0.5.2] - 2026-11-27
 
 ### Fixed
