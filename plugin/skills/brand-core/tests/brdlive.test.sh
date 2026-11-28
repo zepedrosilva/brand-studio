@@ -121,5 +121,37 @@ PY
 rc=$?
 if [ "$rc" -eq 0 ]; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL server checks (see lines above)"; fi
 
+# The page's own script, run under node with a stub DOM: with a pick question open and three concepts,
+# the first successful poll must show the Pick buttons even though the state has not changed.
+if command -v node >/dev/null 2>&1; then
+  mkdir -p pickproj/brand && cp "$FIX/brief-roles-good.md" pickproj/brand/brief.md
+  for c in a b c; do mkdir -p pickproj/brand/concepts/$c && cp "$FIX/good.svg" pickproj/brand/concepts/$c/concept.svg; done
+  (cd pickproj && python3 -I "$SCRIPT" refresh >/dev/null && python3 -I "$SCRIPT" ask pick --kind pick --text "Which concept?" --suggest a --option a --option b --option c >/dev/null)
+  node - pickproj/brand/index.html <<'JS'
+const fs = require("fs"), vm = require("vm");
+const html = fs.readFileSync(process.argv[2], "utf8");
+const code = html.slice(html.lastIndexOf("<script>") + 8, html.lastIndexOf("</script>"));
+const els = {}, el = s => els[s] || (els[s] = { innerHTML: "", appendChild() {} });
+const state = JSON.parse(code.match(/const STATE = (.*);/)[1]);
+const ctx = {
+  location: { protocol: "http:" }, console,
+  document: { querySelector: s => s === "#appFrame" ? null : el(s), querySelectorAll: () => [], addEventListener() {}, activeElement: null, title: "" },
+  IntersectionObserver: class { observe() {} disconnect() {} },
+  fetch: async () => ({ ok: true, json: async () => Object.assign({}, state, { updated: "later", token: "t" }) }),
+  setInterval: () => 1, clearInterval() {}, encodeURIComponent,
+};
+vm.createContext(ctx); vm.runInContext(code, ctx);
+setTimeout(() => {
+  const main = el("#main").innerHTML, live = el("#live").innerHTML;
+  const ok = (main.match(/data-pick="/g) || []).length === 3 && live.includes("Live");
+  if (!ok) console.log("FAIL pick buttons after the first poll: " + (main.match(/data-pick="/g) || []).length + " buttons; status " + live.replace(/<[^>]+>/g, ""));
+  process.exit(ok ? 0 : 1);
+}, 50);
+JS
+  if [ $? -eq 0 ]; then pass=$((pass+1)); else fail=$((fail+1)); fi
+else
+  echo "skip pick buttons after the first poll: node not installed"
+fi
+
 echo "brdlive tests: $pass passed, $fail failed"
 [ "$fail" -eq 0 ]

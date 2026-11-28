@@ -391,7 +391,10 @@ function apply(next){
 async function poll(){
   try {
     const r = await fetch("/api/state", {cache: "no-store"}); if (!r.ok) throw new Error(r.status);
-    connected = true; fails = 0; apply(await r.json());
+    const was = connected; connected = true; fails = 0;
+    const next = await r.json();
+    if (!was) last = "";  // the first connect redraws even when the state is unchanged: pick buttons need `connected`
+    apply(next);
   } catch (e) {
     if (++fails >= 3 && connected){ connected = false; build(); }
     else if (fails >= 3 && !connected) clearInterval(timer);  // a static host, not brdlive: stop asking
