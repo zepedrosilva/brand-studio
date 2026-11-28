@@ -20,7 +20,7 @@ h1,h2,h3,p,ul,ol,dl,figure{margin:0}
 .dot{width:8px;height:8px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:pulse 1.8s infinite}
 .dot.off{background:var(--faint);animation:none}
 @keyframes pulse{70%{box-shadow:0 0 0 7px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
-.working{border:1.5px solid var(--ink);border-radius:14px;padding:18px 20px;display:grid;gap:6px;background:#fff;margin:0 0 28px}.working h3{margin:0;display:flex;align-items:center;gap:12px;font-size:1.25rem}.working p{margin:0;color:var(--muted)}
+.working{border:1.5px solid var(--ink);border-radius:14px;padding:18px 20px;display:grid;gap:6px;background:#fff;margin:0 0 28px}.working h3{margin:0;display:flex;align-items:center;gap:12px;font-size:1.25rem}.working p{margin:0;color:var(--muted)}.working p.said{color:var(--ink);font-size:1.05rem;white-space:pre-line}
 .spin{flex:none;width:18px;height:18px;border:2.5px solid var(--line);border-top-color:var(--ink);border-radius:50%;animation:spin .9s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.dot,.spin{animation:none}html{scroll-behavior:auto}}
@@ -45,7 +45,7 @@ h1{font:700 clamp(34px,5.4vw,56px)/1.04 var(--sans);letter-spacing:-.03em}
 .facts dd{margin:4px 0 0;font-size:14.5px;font-weight:500}
 section.sec{padding:52px 0 8px}
 section.sec>header{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line)}
-section.sec>header .n{font:600 13px var(--mono);color:var(--faint)}
+section.sec>header .n{font:600 13px var(--mono);color:var(--faint)}section.sec>header .n.live{font:600 10.5px var(--sans);letter-spacing:.1em;color:#16a34a}
 h2{font:650 26px/1.2 var(--sans);letter-spacing:-.02em}
 h3{font:650 16px/1.3 var(--sans);margin:22px 0 8px}
 .sub{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin:26px 0 10px}
@@ -101,7 +101,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #2563
 .steps .ic{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:11px;color:#fff}
 .steps .done .ic{background:#16a34a;border-color:#16a34a}.steps .active .ic{border-color:var(--ink);background:#fff}.steps .active .ic:after{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink);animation:pulse2 1.2s infinite}
 @keyframes pulse2{50%{opacity:.25}}
-.steps .pending{color:var(--faint)}.steps small{display:block;color:var(--muted)}
+.steps .pending{color:var(--muted)}.steps small{display:block;color:var(--muted)}
 .md h1,.md h2,.md h3{font:650 17px/1.3 var(--sans);margin:22px 0 8px}.md h1{font-size:19px}.md p{font-size:15px;margin:8px 0}.md ul{margin:8px 0;padding-left:22px;font-size:15px}.md li{margin:3px 0}.md code{font:12.5px var(--mono);background:var(--soft);padding:1px 5px;border-radius:4px}.md hr{border:0;border-top:1px solid var(--line);margin:22px 0}
 .md .tw{margin:12px 0}
 details{border:1px solid var(--line);border-radius:12px;padding:0 18px;margin-top:14px}
@@ -328,8 +328,10 @@ function working(){  // the step the run is on, or "" when nothing is in progres
 }
 function workingHtml(){
   const w = working(); if (done() || !served || !connected || !w) return "";
-  const got = (S.questions || []).some(q => q.status === "answered");
-  return '<div class="working" role="status"><h3><span class="spin" aria-hidden="true"></span>Working on: ' + esc(w) + "</h3><p>" +
+  const a = (S.steps || []).filter(s => s.status === "active").pop(), said = a && a.note ? a.note : "";
+  const got = a && a.id === gotStep;
+  return '<div class="working" role="status"><h3><span class="spin" aria-hidden="true"></span>Working on: ' + esc(w) + "</h3>" +
+    (said ? '<p class="said">' + esc(said) + "</p>" : "") + "<p>" +
     (got ? "Got it. Claude has your answer and is working on this step now. " : "Claude is working on this step now. ") +
     "This page updates as each step finishes; nothing to do until the next question.</p></div>";
 }
@@ -386,9 +388,9 @@ function build(){
       : "This brief is being written now. Sections appear as each step finishes, and questions for you show up at the top. Leave this tab open.") + "</p>" +
     (facts.length ? '<dl class="facts">' + facts.map(f => "<div><dt>" + esc(f[0]) + "</dt><dd>" + esc(f[1]) + "</dd></div>").join("") + "</dl>" : "") + "</header>";
   h += '<div id="askBox">' + askHtml() + "</div>";
-  if (!fin) h += '<section class="sec" id="progress"><header><span class="n">·</span><h2>Progress</h2></header>' + stepsHtml() + "</section>";
+  if (!fin) h += '<section class="sec" id="progress"><header><span class="n live">LIVE</span><h2>Progress</h2></header>' + stepsHtml() + "</section>";
   const pickQ = openQs().some(q => q.kind === "pick");
-  if (!fin && (S.concepts || []).length) h += '<section class="sec" id="concepts"><header><span class="n">·</span><h2>The three concepts</h2></header><div class="cards3">' + S.concepts.map(c => conceptCard(c, pickQ)).join("") + "</div></section>";
+  if (!fin && (S.concepts || []).length) h += '<section class="sec" id="concepts"><header><span class="n live">LIVE</span><h2>The three concepts</h2></header><div class="cards3">' + S.concepts.map(c => conceptCard(c, pickQ)).join("") + "</div></section>";
   secs.forEach((s, i) => h += '<section class="sec" id="' + s[0] + '"><header><span class="n">' + String(i + 1).padStart(2, "0") + "</span><h2>" + s[1] + "</h2></header>" + s[2] + "</section>");
   apps.forEach((s, i) => h += '<section class="sec" id="' + s[0] + '"><header><span class="n">' + "ABC"[i] + "</span><h2>" + s[1] + "</h2></header>" + s[2] + "</section>");
   h += '<footer class="end">Made with the brand-studio plugin. The mark, the palette and the type are a first draft; nothing here has been cleared for trademark or copyright. See the legal notes' + (secs.some(s => s[0] === "legal") ? "" : " in the brand sheet") + ".</footer>";
@@ -425,11 +427,14 @@ function spy(){
 }
 function sig(o){ const c = Object.assign({}, o); delete c.updated; delete c.token; return JSON.stringify(c); }
 let last = "";
+const nAnswered = o => (o.questions || []).filter(q => q.status === "answered").length;
+let seenAnswers = nAnswered(S), gotStep = null;  // "Got it" belongs to the step in progress when a new answer arrived
 function apply(next){
   if (next.token) token = next.token;
   const s = sig(next); if (s === last) return; last = s;
   const typing = document.activeElement && document.activeElement.closest && document.activeElement.closest("form.ask");
   ver = next.updated || ""; S = next;
+  const n = nAnswered(S); if (n > seenAnswers) { const a = (S.steps || []).filter(x => x.status === "active").pop(); gotStep = a ? a.id : null; } seenAnswers = n;
   if (typing) return;  // do not rebuild while the user is typing an answer
   build();
 }
