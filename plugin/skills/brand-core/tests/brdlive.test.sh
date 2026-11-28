@@ -88,7 +88,7 @@ cd "$WORK" || exit 1
 run root 0 "status\|url" --root proj status
 # say with every step finished has nowhere to go
 mkdir -p doneproj/brand && cp "$FIX/brief-roles-good.md" doneproj/brand/brief.md
-for s in brief shortlist concepts review pick kit story export final; do python3 -I "$SCRIPT" --root doneproj step "$s" "done" >/dev/null; done
+for s in brief shortlist concepts review pick kit final; do python3 -I "$SCRIPT" --root doneproj step "$s" "done" >/dev/null; done
 run say-no-step 2 "no step in progress" --root doneproj say "late"
 # start on a new run shows the brief in progress from the first second
 mkdir -p startproj/brand && cp "$FIX/brief-roles-good.md" startproj/brand/brief.md
@@ -177,9 +177,18 @@ setTimeout(() => {
     const m2 = el("#main").innerHTML;
     const kit = state.steps.find(s => s.id === "kit").title;
     const ok2 = m2.includes("Recorded") && m2.includes("concept B") && m2.includes("your change") && !m2.includes('data-pick="') &&
-      m2.includes("Working on: " + kit) && m2.includes("Drawing the palette from the pick") && m2.includes(">LIVE<") && el("#live").innerHTML.includes("Working on: " + kit) && ctx.document.title.startsWith("Working on: " + kit);
-    if (!ok2) console.log("FAIL after the answer: Recorded, no Pick buttons, and 'Working on: " + kit + "' in the card, top bar and title");
-    process.exit(ok2 ? 0 : 1);
+      m2.includes("Working on: " + kit) && m2.includes("Got it.") && m2.includes("Drawing the palette from the pick") && m2.includes(">LIVE<") && el("#live").innerHTML.includes("Working on: " + kit) && ctx.document.title.startsWith("Working on: " + kit);
+    if (!ok2) console.log("FAIL after the answer: Recorded, Got it, no Pick buttons, and 'Working on: " + kit + "' in the card, top bar and title");
+    if (!ok2) process.exit(1);
+    // the kit finishes with no new answer: the next step is plain work, not "Got it"
+    state.steps.forEach(s => { if (s.id === "kit") s.status = "done"; if (s.id === "final") s.status = "active"; });
+    ctx.tick();
+    setTimeout(() => {
+      const m3 = el("#main").innerHTML, fin = state.steps.find(s => s.id === "final").title;
+      const ok3 = m3.includes("Working on: " + fin) && !m3.includes("Got it.") && m3.includes("Claude is working on this step now.");
+      if (!ok3) console.log("FAIL a step started without an answer still says Got it");
+      process.exit(ok3 ? 0 : 1);
+    }, 50);
   }, 50);
 }, 50);
 JS

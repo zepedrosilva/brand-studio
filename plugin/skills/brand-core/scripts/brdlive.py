@@ -14,8 +14,8 @@ import brdcheck  # noqa: E402  (same folder; -I removes the script dir from sys.
 VERSION = "0.1.0"
 TEMPLATE = os.path.join(HERE, "..", "..", "..", "templates", "live-page.html")
 STEPS = [("brief", "Brief"), ("shortlist", "Shortlist"), ("concepts", "Three concepts"), ("review", "Blind review"),
-         ("pick", "Your pick"), ("kit", "Kit: palette, wordmark, lockups"), ("story", "Story and brand sheet"),
-         ("export", "Exports and applications page"), ("final", "Final review")]
+         ("pick", "Your pick"), ("kit", "Kit: palette, wordmark, lockups"),
+         ("final", "Brand sheet, exports and final review")]
 STATUSES = ("pending", "active", "done", "skipped")
 MAX_BODY = 20000
 ROLE = {"mark": "Master mark, flat colours", "mark-mono": "One colour", "mark-reversed": "For dark backgrounds",

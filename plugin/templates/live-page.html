@@ -328,8 +328,8 @@ function working(){  // the step the run is on, or "" when nothing is in progres
 }
 function workingHtml(){
   const w = working(); if (done() || !served || !connected || !w) return "";
-  const got = (S.questions || []).some(q => q.status === "answered");
   const a = (S.steps || []).filter(s => s.status === "active").pop(), said = a && a.note ? a.note : "";
+  const got = a && a.id === gotStep;
   return '<div class="working" role="status"><h3><span class="spin" aria-hidden="true"></span>Working on: ' + esc(w) + "</h3>" +
     (said ? '<p class="said">' + esc(said) + "</p>" : "") + "<p>" +
     (got ? "Got it. Claude has your answer and is working on this step now. " : "Claude is working on this step now. ") +
@@ -427,11 +427,14 @@ function spy(){
 }
 function sig(o){ const c = Object.assign({}, o); delete c.updated; delete c.token; return JSON.stringify(c); }
 let last = "";
+const nAnswered = o => (o.questions || []).filter(q => q.status === "answered").length;
+let seenAnswers = nAnswered(S), gotStep = null;  // "Got it" belongs to the step in progress when a new answer arrived
 function apply(next){
   if (next.token) token = next.token;
   const s = sig(next); if (s === last) return; last = s;
   const typing = document.activeElement && document.activeElement.closest && document.activeElement.closest("form.ask");
   ver = next.updated || ""; S = next;
+  const n = nAnswered(S); if (n > seenAnswers) { const a = (S.steps || []).filter(x => x.status === "active").pop(); gotStep = a ? a.id : null; } seenAnswers = n;
   if (typing) return;  // do not rebuild while the user is typing an answer
   build();
 }

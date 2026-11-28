@@ -16,6 +16,8 @@ All notable changes to this project are listed here. The format follows [Keep a 
 - The live page shows work from the start: a new run opens with the brief in progress, and finishing a step (or picking a concept) starts the next one at once, so there is no idle gap between steps.
 - The live sections of the page carry a green "LIVE" label instead of a dot.
 - Pending steps in Progress are shown in a readable grey, so they no longer look gone while a later step runs.
+- The last three steps (story and brand sheet, exports, final review) are one step, "Brand sheet, exports and final review", and `/brand-create` starts it when it reaches the brand sheet. They ran inside the kit and were ticked off together at the end, so they never showed as in progress.
+- The "Working on" card says "Got it" only for the step in progress when your answer arrived; a later step reads "Claude is working on this step now".
 
 ## [0.5.3] - 2026-11-28
 
